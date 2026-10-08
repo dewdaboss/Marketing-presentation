@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Digital Marketing &amp; Growth Strategy — Creative Team Production</title>
+<style>
+  /* ============================================================
+     TYPOGRAPHY — Inter + Space Grotesk, self-hosted (no network
+     dependency, identical rendering online or offline)
+     ============================================================ */
+  @font-face{font-family:'Inter';font-style:normal;font-weight:300;font-display:block;
+    src:url('vendor/fonts/Inter-300.woff2') format('woff2');}
+  @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:block;
+    src:url('vendor/fonts/Inter-400.woff2') format('woff2');}
+  @font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:block;
+    src:url('vendor/fonts/Inter-500.woff2') format('woff2');}
+  @font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:block;
+    src:url('vendor/fonts/Inter-600.woff2') format('woff2');}
+  @font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:block;
+    src:url('vendor/fonts/Inter-700.woff2') format('woff2');}
+  @font-face{font-family:'Inter';font-style:normal;font-weight:800;font-display:block;
+    src:url('vendor/fonts/Inter-800.woff2') format('woff2');}
+  @font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400;font-display:block;
+    src:url('vendor/fonts/SpaceGrotesk-400.woff2') format('woff2');}
+  @font-face{font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:block;
+    src:url('vendor/fonts/SpaceGrotesk-500.woff2') format('woff2');}
+  @font-face{font-family:'Space Grotesk';font-style:normal;font-weight:700;font-display:block;
+    src:url('vendor/fonts/SpaceGrotesk-700.woff2') format('woff2');}
+</style>
+<style>
+  /* ============================================================
+     CREATIVE TEAM PRODUCTION — Cinematic Presentation
+     Palette: 80% black · 15% neon green · 5% white
+     Canvas:  1600 × 900 (16:9), scaled to fit any viewport
+     ============================================================ */
+  :root{
+    --black:#070808;
+    --black-2:#0c0e0d;
+    --black-3:#111412;
+    --green:#A8FF35;
+    --white:#ffffff;
+    --grey:#8c918c;
+    --line:rgba(255,255,255,0.07);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:100%;height:100%;overflow:hidden;background:#000;color:var(--white);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;}
+
+  /* ---------- stage ---------- */
+  .stage-wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000;}
+  .stage{position:relative;width:1600px;height:900px;overflow:hidden;background:var(--black);
+    transform-origin:center center;}
+  @media (max-aspect-ratio:16/9){ .stage{width:177.78vh;height:100vh;} }
+  @media (min-aspect-ratio:16/9){ .stage{width:100vw;height:56.25vw;} }
+
+  /* ---------- slide shell: flex column, nothing can overflow ---------- */
+  .slide{
+    position:absolute;inset:0;
+    padding:60px 96px 88px;
+    display:flex;flex-direction:column;
+    opacity:0;pointer-events:none;
+    background:var(--black);
+  }
+  .slide.active{opacity:1;pointer-events:auto;}
+
+  .head{flex:0 0 auto;}
+  .body{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;justify-content:center;gap:28px;position:relative;}
+
+  /* two-column pattern */
+  .cols{display:grid;grid-template-columns:1.02fr 0.98fr;gap:56px;align-items:center;}
+  .cols.wide-left{grid-template-columns:1.25fr 0.75fr;}
+  .cols.wide-right{grid-template-columns:0.85fr 1.15fr;}
+  .col{min-width:0;}
+
+  /* ---------- typography ---------- */
+  h1,h2{font-family:'Inter',sans-serif;font-weight:800;letter-spacing:-0.03em;line-height:0.96;}
+  .eyebrow{
+    font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:500;
+    letter-spacing:0.4em;text-transform:uppercase;color:var(--green);
+    margin-bottom:22px;display:flex;align-items:center;gap:14px;
+  }
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--green);flex:0 0 auto;}
+
+  .h-xl{font-size:104px;}
+  .h-l {font-size:82px;}
+  .h-m {font-size:62px;}
+  .h-s {font-size:44px;}
+  .h-xx{font-size:70px;}
+
+  .sub{font-size:19px;font-weight:300;line-height:1.55;color:var(--grey);max-width:640px;}
+  .sub.sm{font-size:16px;}
+  .green{color:var(--green);}
+  .mono{font-family:'Space Grotesk',sans-serif;}
+
+  /* ---------- overlays ---------- */
+  .vignette{position:absolute;inset:0;pointer-events:none;z-index:50;
+    background:radial-gradient(ellipse at center,rgba(0,0,0,0) 42%,rgba(0,0,0,0.62) 100%);}
+  .grain{position:absolute;inset:0;pointer-events:none;z-index:51;opacity:0.03;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.8'/></svg>");}
+  .top-accent{position:absolute;top:0;left:0;right:0;height:1px;z-index:52;opacity:0.45;
+    background:linear-gradient(90deg,transparent,rgba(168,255,53,0.5) 50%,transparent);}
+  .orb{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;background:var(--green);}
+  .cinematic-frame{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+  .cinematic-frame .bg-blur{position:absolute;inset:-10%;
+    background:radial-gradient(ellipse at 18% 28%,rgba(168,255,53,0.09),transparent 52%),
+               radial-gradient(ellipse at 82% 72%,rgba(168,255,53,0.05),transparent 50%),
+               linear-gradient(180deg,#050606 0%,#0a0c0a 100%);}
+
+  /* ---------- chrome ---------- */
+  .logo-slot{position:absolute;top:46px;left:96px;z-index:60;display:flex;align-items:center;gap:14px;}
+  .logo-slot img{height:40px;display:block;}
+  .logo-fallback{display:flex;flex-direction:column;gap:5px;}
+  .logo-fallback .l1{font-family:'Space Grotesk',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:0.22em;color:#fff;}
+  .logo-fallback .l2{font-family:'Space Grotesk',sans-serif;font-size:9px;letter-spacing:0.42em;color:var(--green);}
+  .slide-num{position:absolute;top:50px;right:96px;z-index:60;
+    font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:0.3em;color:var(--grey);text-transform:uppercase;}
+  .slide-num b{color:var(--green);font-weight:500;}
+
+  .nav{position:absolute;left:96px;right:96px;bottom:30px;z-index:60;display:flex;align-items:center;gap:26px;}
+  .progress{flex:1;height:2px;background:rgba(255,255,255,0.1);position:relative;cursor:pointer;}
+  .progress .bar{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--green);box-shadow:0 0 10px rgba(168,255,53,0.7);}
+  .nav .counter{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:0.2em;color:var(--grey);text-transform:uppercase;white-space:nowrap;}
+  .nav .counter b{color:var(--green);font-weight:500;}
+  .nav .hint{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.22em;color:rgba(140,145,140,0.65);text-transform:uppercase;white-space:nowrap;}
+  .nav .hint span{color:var(--green);}
+
+  /* ---------- animation helper layers (created once by JS) ---------- */
+  .cover-line,.final-line-neon{position:absolute;inset:0;
+    background:linear-gradient(90deg,transparent 0%,var(--green) 50%,transparent 100%);
+    box-shadow:0 0 26px var(--green);transform:scaleX(0);}
+  .cover-line{transform-origin:left center;}
+  .final-line-neon{transform-origin:center;}
+  .flow-bar{position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--green);transform:scaleY(0);transform-origin:top center;}
+  .dash-bar{position:absolute;top:0;left:0;width:3px;height:0;background:var(--green);}
+  .ct-shine{position:absolute;left:0;top:0;bottom:0;width:0;pointer-events:none;
+    background:linear-gradient(90deg,rgba(168,255,53,0.13),transparent);}
+  .loop-ring{position:absolute;inset:34px;border:1px dashed rgba(168,255,53,0.16);border-radius:50%;pointer-events:none;}
+
+  /* ============================================================
+     SLIDE 1 — COVER
+     ============================================================ */
+  #s1 .cover-center{position:absolute;left:96px;right:96px;top:50%;transform:translateY(-50%);}
+  #s1 .word{display:inline-block;}
+  #s1 .line{display:block;overflow:hidden;padding-bottom:0.04em;}
+  #s1 .cover-sub{margin-top:34px;}
+  #s1 .cover-sub .inner{display:block;}
+  #s1 .cover-neon{position:absolute;left:0;right:0;top:47%;height:2px;}
+  #s1 .cover-meta{position:absolute;left:96px;right:96px;bottom:126px;display:flex;justify-content:space-between;align-items:flex-end;}
+  #s1 .cover-meta .k{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:0.3em;color:var(--grey);text-transform:uppercase;}
+  #s1 .cover-meta .v{font-size:21px;font-weight:700;margin-top:9px;letter-spacing:-0.01em;}
+  #s1 .cover-meta .v2{font-size:15px;font-weight:500;color:var(--green);margin-top:9px;}
+  #s1 .cover-meta .inner{display:block;}
+
+  /* ============================================================
+     SLIDE 2 — PROBLEM
+     ============================================================ */
+  .flow-row{display:flex;flex-direction:column;gap:13px;margin-top:30px;}
+  .flow-step{display:flex;align-items:center;gap:22px;padding:15px 24px;position:relative;
+    border:1px solid rgba(168,255,53,0.13);
+    background:linear-gradient(90deg,rgba(168,255,53,0.045),rgba(168,255,53,0) 65%);}
+  .flow-step .num{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:0.2em;color:var(--green);width:38px;flex:0 0 auto;}
+  .flow-step .lbl{font-size:20px;font-weight:600;letter-spacing:-0.01em;}
+  .statement{display:flex;align-items:center;gap:22px;margin-top:34px;}
+  .statement .rule{width:56px;height:1px;background:var(--green);flex:0 0 auto;}
+  .statement .txt{font-size:27px;font-weight:700;letter-spacing:-0.02em;}
+  .scatter{position:relative;width:100%;height:520px;}
+  .sc-piece{position:absolute;background:var(--black-2);border:1px solid var(--line);padding:11px;}
+  .sc-piece .b{background:rgba(255,255,255,0.06);}
+  .sc-piece .t{height:3px;background:rgba(255,255,255,0.09);}
+
+  /* ============================================================
+     SLIDE 3 — APPROACH (ecosystem ring)
+     ============================================================ */
+  .eco-wrap{position:relative;width:540px;height:540px;margin:0 auto;}
+  .eco-ring{position:absolute;border-radius:50%;border:1px dashed rgba(255,255,255,0.07);}
+  .eco-ring.r1{inset:0;}
+  .eco-ring.r2{inset:58px;border-color:rgba(168,255,53,0.16);}
+  .eco-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:176px;height:176px;
+    border:1px solid rgba(168,255,53,0.4);border-radius:50%;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;}
+  .eco-core .t{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.3em;color:var(--green);text-transform:uppercase;}
+  .eco-core .b{font-size:23px;font-weight:800;margin-top:7px;letter-spacing:-0.02em;}
+  .eco-node{position:absolute;transform:translate(-50%,-50%);padding:14px 18px;min-width:126px;
+    background:var(--black-2);border:1px solid rgba(168,255,53,0.24);text-align:center;position:absolute;}
+  .eco-node .nm{font-size:13.5px;font-weight:700;letter-spacing:0.03em;}
+  .eco-node .mini{display:block;font-family:'Space Grotesk',sans-serif;font-size:9px;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--grey);margin-top:5px;}
+  .eco-node .dot{position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:7px;height:7px;
+    background:var(--green);border-radius:50%;box-shadow:0 0 10px var(--green);}
+
+  /* ============================================================
+     SLIDE 4 — UNDERSTAND (dashboard cards)
+     ============================================================ */
+  .dash{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .dash-card{padding:22px 20px;background:var(--black-2);border:1px solid var(--line);position:relative;overflow:hidden;}
+  .dash-card .ic{width:30px;height:30px;border:1px solid var(--green);color:var(--green);
+    display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;
+    font-size:12px;margin-bottom:15px;}
+  .dash-card .lbl{font-size:15px;font-weight:600;}
+  .dash-card .desc{font-size:11.5px;color:var(--grey);margin-top:5px;line-height:1.45;letter-spacing:0.01em;}
+
+  /* ============================================================
+     SLIDE 5 — AUDIENCE MAP
+     ============================================================ */
+  .aud-map{position:relative;width:560px;height:560px;margin:0 auto;}
+  .aud-ring{position:absolute;border-radius:50%;border:1px dashed rgba(168,255,53,0.13);}
+  .aud-ring.r1{inset:0;}
+  .aud-ring.r2{inset:72px;}
+  .aud-ring.r3{inset:144px;border-color:rgba(168,255,53,0.2);}
+  .aud-map .core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:150px;height:150px;
+    border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:radial-gradient(circle,rgba(168,255,53,0.22),rgba(168,255,53,0) 72%);}
+  .aud-map .core .t{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.28em;color:var(--green);text-transform:uppercase;}
+  .aud-map .core .b{font-size:19px;font-weight:800;margin-top:6px;}
+  .aud-seg{position:absolute;transform:translate(-50%,-50%);padding:11px 17px;background:var(--black-2);
+    border:1px solid rgba(168,255,53,0.2);font-size:13px;font-weight:600;white-space:nowrap;}
+  .aud-seg .mini{display:block;font-family:'Space Grotesk',sans-serif;font-size:8.5px;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--green);margin-bottom:4px;font-weight:400;}
+
+  /* ============================================================
+     SLIDE 6 — COMPETITOR CARDS
+     ============================================================ */
+  .comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .comp-card{padding:26px 24px;background:var(--black-2);border:1px solid var(--line);}
+  .comp-card .ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+  .comp-card .brand{font-family:'Space Grotesk',sans-serif;font-size:9.5px;letter-spacing:0.28em;color:var(--grey);text-transform:uppercase;}
+  .comp-card .tag{font-family:'Space Grotesk',sans-serif;font-size:9.5px;letter-spacing:0.16em;color:var(--green);
+    border:1px solid var(--green);padding:4px 9px;text-transform:uppercase;}
+  .comp-card ul{list-style:none;}
+  .comp-card li{font-size:13.5px;color:#cfd2cf;padding:8px 0;display:flex;gap:10px;align-items:flex-start;
+    border-bottom:1px solid rgba(255,255,255,0.05);line-height:1.35;}
+  .comp-card li:last-child{border-bottom:none;}
+  .comp-card li::before{content:"";width:5px;height:5px;background:var(--green);margin-top:7px;flex:0 0 auto;}
+
+  /* ============================================================
+     SLIDE 7 — PILLARS
+     ============================================================ */
+  .pillars{display:flex;align-items:center;justify-content:center;gap:40px;position:relative;}
+  .pillar-col{display:flex;flex-direction:column;gap:16px;}
+  .pillar{padding:18px 22px;background:var(--black-2);border:1px solid rgba(168,255,53,0.2);min-width:210px;}
+  .pillar .n{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.22em;color:var(--green);}
+  .pillar .nm{font-size:20px;font-weight:800;margin-top:5px;letter-spacing:-0.015em;}
+  .pillar-core{position:relative;width:196px;height:196px;border:1px solid var(--green);border-radius:50%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;flex:0 0 auto;
+    box-shadow:0 0 50px rgba(168,255,53,0.16);}
+  .pillar-core .t{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.28em;color:var(--green);text-transform:uppercase;}
+  .pillar-core .b{font-size:30px;font-weight:800;margin-top:7px;letter-spacing:-0.03em;}
+  .pillar-link{position:absolute;top:50%;height:1px;width:40px;background:rgba(168,255,53,0.3);}
+
+  /* ============================================================
+     SLIDE 8 — CONTENT TYPES
+     ============================================================ */
+  .content-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .ctile{position:relative;overflow:hidden;background:var(--black-2);border:1px solid var(--line);padding:20px;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:86px;}
+  .ctile .tag{font-family:'Space Grotesk',sans-serif;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--green);}
+  .ctile .lbl{font-size:15.5px;font-weight:600;margin-top:6px;letter-spacing:-0.01em;line-height:1.25;}
+  .ctile .arr{color:var(--green);font-size:18px;flex:0 0 auto;}
+  .ctile.inv{background:var(--green);border-color:var(--green);}
+  .ctile.inv .tag,.ctile.inv .lbl,.ctile.inv .arr{color:#07090a;}
+
+  /* ============================================================
+     SLIDE 9 — REELS
+     ============================================================ */
+  .rs-row{display:flex;gap:18px;align-items:flex-start;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+  .rs-row:last-child{border-bottom:none;}
+  .rs-row .n{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.24em;color:var(--green);
+    width:58px;flex:0 0 auto;padding-top:6px;}
+  .rs-row .t{font-size:19px;font-weight:700;letter-spacing:-0.01em;}
+  .rs-row .d{font-size:12.5px;color:var(--grey);margin-top:3px;}
+  .reel-ui{position:relative;width:290px;height:520px;margin:0 auto;background:var(--black-2);
+    border:1px solid rgba(255,255,255,0.09);border-radius:22px;overflow:hidden;}
+  .reel-ui .notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:104px;height:20px;
+    background:#000;border-radius:0 0 12px 12px;z-index:3;}
+  .reel-ui .screen{position:absolute;inset:9px;border-radius:15px;overflow:hidden;
+    background:linear-gradient(180deg,#0f1410,#070808);}
+  .reel-ui .screen::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at 32% 18%,rgba(168,255,53,0.16),transparent 62%);}
+  .reel-ui .bar-top{position:absolute;top:22px;left:18px;right:18px;display:flex;justify-content:space-between;z-index:2;}
+  .reel-ui .bar-top .a{font-family:'Space Grotesk',sans-serif;font-size:11.5px;color:#fff;}
+  .reel-ui .bar-top .b{font-size:11px;color:var(--green);}
+  .reel-line{position:absolute;left:26px;top:76px;bottom:78px;width:1px;background:rgba(255,255,255,0.1);}
+  .reel-step{position:absolute;left:16px;right:54px;display:flex;align-items:center;gap:10px;
+    opacity:0.28;transition:opacity 0.45s ease;}
+  .reel-step.active{opacity:1;}
+  .reel-step .d{width:22px;height:22px;flex:0 0 auto;border:1px solid var(--grey);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;
+    font-size:9.5px;color:var(--grey);}
+  .reel-step.active .d{border-color:var(--green);background:var(--green);color:#000;}
+  .reel-step .b{display:block;font-size:13.5px;font-weight:700;letter-spacing:0.03em;color:#fff;}
+  .reel-step .s{display:block;font-family:'Space Grotesk',sans-serif;font-size:9px;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--grey);margin-top:2px;}
+  .reel-ui .side{position:absolute;right:12px;bottom:74px;display:flex;flex-direction:column;gap:14px;}
+  .reel-ui .side .ico{width:30px;height:30px;border:1px solid rgba(255,255,255,0.2);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:11px;color:#cfd2cf;}
+
+  /* ============================================================
+     SLIDES 10 & 12 — FORMULA
+     ============================================================ */
+  .formula{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
+  .f-row{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
+  .f-item{padding:16px 20px;background:var(--black-2);border:1px solid rgba(168,255,53,0.22);
+    font-size:15.5px;font-weight:600;letter-spacing:-0.01em;white-space:nowrap;}
+  .f-op{font-size:21px;font-weight:300;color:var(--green);flex:0 0 auto;}
+  .f-result{padding:16px 26px;background:var(--green);color:#07090a;font-size:17.5px;font-weight:800;
+    letter-spacing:-0.01em;white-space:nowrap;}
+  .note{padding:20px 26px;border-left:2px solid var(--green);
+    background:linear-gradient(90deg,rgba(168,255,53,0.055),transparent 70%);}
+  .note p{font-size:14.5px;line-height:1.6;color:#a9aea9;max-width:1000px;}
+
+  /* sponsored-post mock (slide 12) */
+  .ad-strip{display:flex;align-items:center;gap:26px;padding:22px 26px;background:var(--black-2);
+    border:1px solid var(--line);max-width:980px;margin:0 auto;width:100%;}
+  .ad-strip .av{width:42px;height:42px;flex:0 0 auto;border:1px solid var(--green);color:var(--green);
+    display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:12px;}
+  .ad-strip .who{flex:0 0 auto;}
+  .ad-strip .who .n{font-size:13.5px;font-weight:600;}
+  .ad-strip .who .s{font-family:'Space Grotesk',sans-serif;font-size:9.5px;letter-spacing:0.18em;
+    text-transform:uppercase;color:var(--grey);margin-top:3px;}
+  .ad-strip .msg{flex:1;font-size:19px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;}
+  .ad-strip .cta{flex:0 0 auto;font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.18em;
+    text-transform:uppercase;border:1px solid var(--green);color:var(--green);padding:11px 18px;}
+
+  /* ============================================================
+     SLIDE 11 — ORGANIC LOOP
+     ============================================================ */
+  .loop-wrap{position:relative;width:560px;height:560px;margin:0 auto;}
+  .loop-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:164px;height:164px;
+    border:1px dashed rgba(168,255,53,0.42);border-radius:50%;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;}
+  .loop-core .t{font-family:'Space Grotesk',sans-serif;font-size:9.5px;letter-spacing:0.28em;color:var(--green);text-transform:uppercase;}
+  .loop-core .b{font-size:22px;font-weight:800;margin-top:6px;letter-spacing:-0.02em;}
+  .loop-node{position:absolute;transform:translate(-50%,-50%);padding:13px 20px;background:var(--black-2);
+    border:1px solid rgba(168,255,53,0.24);white-space:nowrap;text-align:center;}
+  .loop-node .mini{display:block;font-family:'Space Grotesk',sans-serif;font-size:8.5px;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--green);margin-bottom:4px;font-weight:400;}
+  .loop-node .nm{font-size:14px;font-weight:700;letter-spacing:0.02em;}
+
+  /* ============================================================
+     SLIDE 13 — FUNNEL
+     ============================================================ */
+  .funnel{display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .funnel-stage{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:15px 26px;
+    border:1px solid rgba(168,255,53,0.24);transform-origin:center;
+    background:linear-gradient(90deg,rgba(168,255,53,0.02),rgba(168,255,53,0.09) 50%,rgba(168,255,53,0.02));}
+  .funnel-stage .n{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.24em;color:var(--green);text-transform:uppercase;flex:0 0 auto;}
+  .funnel-stage .l{font-size:20px;font-weight:800;letter-spacing:-0.01em;flex:1;}
+  .funnel-stage .d{font-size:12.5px;color:var(--grey);text-align:right;max-width:330px;}
+  .funnel-stage.last{border-color:var(--green);
+    background:linear-gradient(90deg,rgba(168,255,53,0.08),rgba(168,255,53,0.2) 50%,rgba(168,255,53,0.08));}
+  .funnel-arrow{color:var(--green);font-size:15px;line-height:1;}
+
+  /* ============================================================
+     SLIDE 14 — CREATIVE TESTING
+     ============================================================ */
+  .creatives{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .creative{position:relative;overflow:hidden;background:var(--black-2);border:1px solid var(--line);
+    padding:18px;height:296px;display:flex;flex-direction:column;justify-content:space-between;}
+  .creative .tag{font-family:'Space Grotesk',sans-serif;font-size:9.5px;letter-spacing:0.24em;text-transform:uppercase;color:var(--green);}
+  .creative .mock{position:relative;flex:1;margin:14px -6px;overflow:hidden;
+    background:radial-gradient(circle at 50% 50%,rgba(168,255,53,0.10),transparent 70%);}
+  .creative .lbl{font-size:17px;font-weight:800;letter-spacing:-0.02em;line-height:1.15;}
+  .creative .cta{margin-top:10px;font-family:'Space Grotesk',sans-serif;font-size:9.5px;letter-spacing:0.16em;
+    text-transform:uppercase;border:1px solid rgba(255,255,255,0.35);padding:7px 12px;align-self:flex-start;color:#e6e8e6;}
+  .creative .glow{position:absolute;border-radius:50%;filter:blur(34px);}
+  .creative.v1 .glow{width:120px;height:120px;background:rgba(168,255,53,0.5);top:34%;left:30%;}
+  .creative.v2 .glow{width:96px;height:96px;background:rgba(255,255,255,0.16);top:24%;left:16%;}
+  .creative.v2 .glow2{position:absolute;width:80px;height:80px;background:rgba(168,255,53,0.38);
+    border-radius:50%;filter:blur(28px);bottom:22%;right:16%;}
+  .creative.v3 .mock{background:linear-gradient(135deg,rgba(168,255,53,0.22),rgba(255,255,255,0.03));}
+  .creative.v4 .mock{background:repeating-linear-gradient(45deg,rgba(168,255,53,0.12) 0 8px,transparent 8px 16px);}
+  .pills{display:flex;gap:12px;flex-wrap:wrap;}
+  .pill{padding:11px 18px;border:1px solid rgba(255,255,255,0.11);font-family:'Space Grotesk',sans-serif;
+    font-size:12.5px;letter-spacing:0.06em;color:#cfd2cf;white-space:nowrap;}
+
+  /* ============================================================
+     SLIDE 15 — TARGETING
+     ============================================================ */
+  .target-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .tg{padding:24px;background:var(--black-2);border:1px solid rgba(168,255,53,0.15);}
+  .tg .n{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.24em;color:var(--green);text-transform:uppercase;}
+  .tg .l{font-size:22px;font-weight:800;margin:9px 0 7px;letter-spacing:-0.02em;}
+  .tg .d{font-size:13px;color:var(--grey);line-height:1.5;}
+
+  /* ============================================================
+     SLIDE 16 — RETARGETING JOURNEY
+     ============================================================ */
+  .journey{display:flex;align-items:stretch;justify-content:center;gap:0;flex-wrap:nowrap;}
+  .j-step{padding:16px 18px;background:var(--black-2);border:1px solid rgba(168,255,53,0.16);
+    text-align:center;flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:center;}
+  .j-step .mini{display:block;font-family:'Space Grotesk',sans-serif;font-size:9px;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--green);margin-bottom:6px;}
+  .j-step .nm{font-size:13px;font-weight:600;line-height:1.3;}
+  .j-step.hl{border-color:var(--green);}
+  .j-step.solid{background:var(--green);border-color:var(--green);}
+  .j-step.solid .mini,.j-step.solid .nm{color:#07090a;}
+  .j-arrow{display:flex;align-items:center;padding:0 9px;color:var(--green);font-size:15px;flex:0 0 auto;}
+
+  /* ============================================================
+     SLIDE 17 — SPLIT → MERGE
+     ============================================================ */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:0;width:100%;height:100%;}
+  .half{display:flex;flex-direction:column;justify-content:center;padding:0 56px;}
+  .half.left{border-right:1px solid rgba(255,255,255,0.07);
+    background:linear-gradient(180deg,rgba(168,255,53,0.035),transparent);}
+  .half .label{font-family:'Space Grotesk',sans-serif;font-size:10.5px;letter-spacing:0.4em;
+    text-transform:uppercase;color:var(--green);margin-bottom:22px;}
+  .half .ttl{font-size:44px;font-weight:800;letter-spacing:-0.03em;line-height:1;margin-bottom:26px;}
+  .half ul{list-style:none;}
+  .half li{display:flex;align-items:center;gap:14px;font-size:17px;color:#cfd2cf;padding:11px 0;
+    border-bottom:1px solid rgba(255,255,255,0.06);}
+  .half li .d{width:6px;height:6px;background:var(--green);border-radius:50%;flex:0 0 auto;}
+  .merged{position:absolute;inset:0;z-index:5;background:var(--black);display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;padding:0 96px;}
+  .merged .l1{font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:0.44em;
+    text-transform:uppercase;color:var(--green);margin-bottom:20px;}
+  .merged .l2{font-size:68px;font-weight:800;letter-spacing:-0.035em;line-height:1;}
+  .merged .l3{font-size:20px;font-weight:300;color:var(--grey);margin-top:22px;}
+
+  /* ============================================================
+     SLIDE 18 — WORKFLOW TIMELINE
+     ============================================================ */
+  .timeline{position:relative;padding-top:24px;}
+  .tl-track{position:absolute;left:0;right:0;top:64px;height:2px;background:rgba(255,255,255,0.08);}
+  .tl-fill{position:absolute;left:0;top:64px;height:2px;width:0;background:var(--green);box-shadow:0 0 12px var(--green);}
+  .tl-phases{display:grid;grid-template-columns:repeat(8,1fr);gap:12px;position:relative;}
+  .tl-phase{text-align:center;}
+  .tl-phase .n{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.2em;color:var(--green);margin-bottom:26px;}
+  .tl-phase .dot{width:14px;height:14px;border:2px solid rgba(255,255,255,0.22);border-radius:50%;
+    background:var(--black);margin:0 auto 20px;position:relative;z-index:2;}
+  .tl-phase .lbl{font-size:13px;font-weight:600;line-height:1.35;color:#d6d9d6;}
+
+  /* ============================================================
+     SLIDE 19 — ANALYTICS
+     ============================================================ */
+  .analytics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .kpi{padding:18px 20px;background:var(--black-2);border:1px solid var(--line);}
+  .kpi .lbl{font-family:'Space Grotesk',sans-serif;font-size:9.5px;letter-spacing:0.2em;color:var(--grey);text-transform:uppercase;}
+  .kpi .val{font-size:30px;font-weight:800;margin-top:8px;letter-spacing:-0.025em;font-variant-numeric:tabular-nums;}
+  .kpi .trend{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.12em;color:var(--green);margin-top:5px;}
+  .chart{padding:22px 24px;background:var(--black-2);border:1px solid var(--line);display:flex;flex-direction:column;height:290px;}
+  .chart .chd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:20px;}
+  .chart .chd .t{font-size:13px;font-weight:600;letter-spacing:0.02em;}
+  .chart .chd .t em{font-style:normal;color:var(--grey);font-weight:400;}
+  .chart .lg{display:flex;gap:18px;font-family:'Space Grotesk',sans-serif;font-size:9.5px;
+    letter-spacing:0.16em;text-transform:uppercase;color:var(--grey);}
+  .chart .lg span{display:flex;align-items:center;gap:7px;}
+  .chart .lg span::before{content:"";width:14px;height:2px;background:currentColor;}
+  .chart .lg .g{color:var(--green);}
+  .chart .lg .w{color:#fff;}
+  .bars{flex:1;display:flex;align-items:flex-end;gap:12px;border-bottom:1px solid rgba(255,255,255,0.07);padding-bottom:2px;min-height:0;}
+  .bars .col{flex:1;height:100%;display:flex;align-items:flex-end;gap:3px;justify-content:center;}
+  .bars .bar,.bars .bar-l{width:44%;height:0;}
+  .bars .bar{background:linear-gradient(180deg,var(--green),rgba(168,255,53,0.28));}
+  .bars .bar-l{background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.18));}
+  .x-axis{display:flex;gap:12px;padding-top:10px;}
+  .x-axis span{flex:1;text-align:center;font-family:'Space Grotesk',sans-serif;font-size:9.5px;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--grey);}
+  .demo-note{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.16em;
+    text-transform:uppercase;color:rgba(140,145,140,0.75);}
+
+  /* ============================================================
+     SLIDE 20 — REPORTING
+     ============================================================ */
+  .rep-list{list-style:none;margin-top:26px;}
+  .rep-list li{display:flex;gap:20px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+  .rep-list li:last-child{border-bottom:none;}
+  .rep-list .n{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.24em;color:var(--green);width:32px;flex:0 0 auto;}
+  .rep-list .t{font-size:16.5px;font-weight:600;}
+  .report{background:var(--black-2);border:1px solid var(--line);padding:26px;width:100%;}
+  .report .rh{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;
+    border-bottom:1px solid rgba(255,255,255,0.07);}
+  .report .rh .t{font-size:13px;font-weight:600;letter-spacing:0.1em;}
+  .report .rh .m{font-family:'Space Grotesk',sans-serif;font-size:9.5px;letter-spacing:0.2em;
+    text-transform:uppercase;color:var(--green);}
+  .report .sec{padding:15px 0;border-bottom:1px solid rgba(255,255,255,0.045);}
+  .report .sec:last-child{border-bottom:none;padding-bottom:0;}
+  .report .st{font-family:'Space Grotesk',sans-serif;font-size:9.5px;letter-spacing:0.24em;
+    text-transform:uppercase;color:var(--green);margin-bottom:9px;}
+  .report .it{display:flex;justify-content:space-between;gap:20px;font-size:12.5px;color:#cfd2cf;padding:5px 0;}
+  .report .it .v{font-family:'Space Grotesk',sans-serif;font-size:11.5px;color:var(--green);}
+  .report .next{font-size:12.5px;color:var(--green);}
+
+  /* ============================================================
+     SLIDE 21 — DIFFERENT
+     ============================================================ */
+  .diff-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .df{padding:28px 18px;background:var(--black-2);border:1px solid rgba(168,255,53,0.15);text-align:center;}
+  .df .ic{width:38px;height:38px;margin:0 auto 16px;border:1px solid var(--green);border-radius:50%;
+    color:var(--green);display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk',sans-serif;font-size:12px;}
+  .df .l{font-size:14.5px;font-weight:700;line-height:1.3;letter-spacing:-0.005em;}
+
+  /* ============================================================
+     SLIDE 22 — MINDSET LOOP
+     ============================================================ */
+  .mind{display:flex;align-items:center;justify-content:center;gap:20px;}
+  .ml{padding:24px 38px;border:1px solid rgba(168,255,53,0.24);font-size:30px;font-weight:800;letter-spacing:-0.025em;white-space:nowrap;}
+  .ml.solid{background:var(--green);border-color:var(--green);color:#07090a;}
+  .ml-a{font-size:27px;color:var(--green);flex:0 0 auto;}
+
+  /* ============================================================
+     SLIDE 23 — ONE SYSTEM
+     ============================================================ */
+  .sys{display:flex;flex-direction:column;align-items:center;gap:0;}
+  .sys-node{padding:11px 26px;min-width:196px;text-align:center;background:var(--black-2);
+    border:1px solid rgba(168,255,53,0.2);font-size:15.5px;font-weight:700;letter-spacing:0.04em;}
+  .sys-node.hl{background:var(--green);border-color:var(--green);color:#07090a;}
+  .sys-arrow{color:var(--green);font-size:13px;line-height:1;padding:6px 0;}
+
+  /* ============================================================
+     SLIDE 24 — FINAL
+     ============================================================ */
+  #s24 .final-center{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;padding:0 96px;}
+  #s24 .fl{display:block;overflow:hidden;padding-bottom:0.04em;}
+  #s24 .fl span{display:inline-block;}
+  #s24 .final-sub{margin-top:34px;font-size:24px;font-weight:500;letter-spacing:-0.01em;}
+  #s24 .final-tag{font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:0.42em;
+    text-transform:uppercase;color:var(--green);margin-top:24px;}
+  #s24 .final-neon{position:relative;width:56%;height:2px;margin-top:34px;}
+  #s24 .final-meta{display:flex;gap:64px;margin-top:34px;}
+  #s24 .final-meta .lbl{font-family:'Space Grotesk',sans-serif;font-size:9.5px;letter-spacing:0.3em;
+    text-transform:uppercase;color:var(--grey);margin-bottom:8px;}
+  #s24 .final-meta .val{font-size:16px;font-weight:500;letter-spacing:0.02em;}
+  #s24 .final-logo{margin-top:36px;}
+  #s24 .final-logo img{height:58px;display:block;}
+  #s24 .final-fallback{display:flex;flex-direction:column;gap:7px;align-items:center;}
+  #s24 .final-fallback .l1{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;letter-spacing:0.24em;}
+  #s24 .final-fallback .l2{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:0.5em;color:var(--green);}
+
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* ============================================================
+     PRINT / PDF — press P to export a clean 16:9 deck
+     One slide per page, 1600×900.
+     ============================================================ */
+  @media print{
+    @page{size:1600px 900px;margin:0;}
+    html,body{overflow:visible!important;height:auto!important;background:#070808!important;}
+    .stage-wrap{position:static!important;display:block!important;}
+    .stage{width:1600px!important;height:auto!important;transform:none!important;
+      overflow:visible!important;box-shadow:none!important;}
+    .slide{position:relative!important;inset:auto!important;width:1600px!important;height:900px!important;
+      opacity:1!important;pointer-events:auto!important;
+      break-after:page;page-break-after:always;}
+    .slide:last-of-type{break-after:auto;page-break-after:auto;}
+    .vignette,.grain,.nav,.slide-num,.orb,.top-accent{display:none!important;}
+    .logo-slot{position:fixed!important;top:46px;left:96px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+<div class="stage" id="stage">
+
+  <!-- ============ global chrome ============ -->
+  <div class="top-accent"></div>
+  <div class="vignette"></div>
+  <div class="grain"></div>
+
+  <!-- Official logo slot — drop the official file at assets/logo.svg (or .png).
+       Until then a typographic wordmark is used; no logo is invented or redrawn. -->
+  <div class="logo-slot">
+    <img alt="Creative Team Production" data-logo style="display:none;">
+    <div class="logo-fallback" id="logoFallback">
+      <span class="l1">CREATIVE TEAM PRODUCTION</span>
+      <span class="l2">I N D O R E</span>
+    </div>
+  </div>
+  <div class="slide-num"><b id="slideNum">01</b> / 24</div>
+
+  <!-- ================================================================
+       SLIDE 1 — COVER
+       ================================================================ -->
+  <section class="slide active" id="s1">
+    <div class="cinematic-frame"><div class="bg-blur"></div></div>
+    <div class="orb" style="width:620px;height:620px;top:6%;left:-12%;opacity:0;"></div>
+    <div class="orb" style="width:460px;height:460px;bottom:-14%;right:-6%;background:#fff;opacity:0;filter:blur(140px);"></div>
+
+    <div class="cover-center">
+      <div class="eyebrow">Digital Marketing &amp; Growth Strategy</div>
+      <h1 class="h-xl">
+        <span class="line"><span class="word">DON'T</span> <span class="word">JUST</span> <span class="word">CREATE</span></span>
+        <span class="line"><span class="word">CONTENT.</span></span>
+        <span class="line" style="margin-top:12px;"><span class="word green">BUILD</span> <span class="word green">A</span> <span class="word green">BRAND.</span></span>
+      </h1>
+      <div class="cover-sub">
+        <span class="inner" style="display:block;">
+          <span class="sub" style="font-size:24px;line-height:1.4;color:#c8cbc8;max-width:720px;display:block;">
+            Organic Growth + Meta Ads<br>
+            <span style="color:var(--grey);">A Complete Digital Marketing Approach</span>
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <div class="cover-neon"></div>
+
+    <div class="cover-meta">
+      <div><span class="inner"><span class="k" style="display:block;">Client Presentation</span>
+        <span class="v" style="display:block;">Creative Team Production</span></span></div>
+      <div style="text-align:right;"><span class="inner"><span class="k" style="display:block;">Indore, India</span>
+        <span class="v2" style="display:block;">Create • Shoot • Grow</span></span></div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 2 — THE REAL PROBLEM
+       ================================================================ -->
+  <section class="slide" id="s2">
+    <div class="body cols wide-left">
+      <div class="col">
+        <div class="eyebrow">The Reality</div>
+        <h2 class="h-l">Posting Content<br><span class="green">Is Not Marketing.</span></h2>
+        <div class="flow-row">
+          <div class="flow-step" data-step><span class="num">01</span><span class="lbl">Random Posts</span></div>
+          <div class="flow-step" data-step><span class="num">02</span><span class="lbl">Random Reels</span></div>
+          <div class="flow-step" data-step><span class="num">03</span><span class="lbl">No Clear Strategy</span></div>
+          <div class="flow-step" data-step><span class="num">04</span><span class="lbl">No Consistent Brand Positioning</span></div>
+          <div class="flow-step" data-step><span class="num">05</span><span class="lbl">Unpredictable Results</span></div>
+        </div>
+        <div class="statement">
+          <span class="rule"></span>
+          <span class="txt">Marketing needs a <span class="green">system.</span></span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="scatter">
+          <div class="sc-piece" style="top:4%;left:6%;width:150px;height:96px;">
+            <div class="b" style="height:44px;margin-bottom:9px;"></div>
+            <div class="t" style="width:72%;"></div>
+          </div>
+          <div class="sc-piece" style="top:22%;right:2%;width:118px;height:158px;">
+            <div class="b" style="height:96px;margin-bottom:9px;background:linear-gradient(135deg,rgba(168,255,53,0.12),rgba(255,255,255,0.03));"></div>
+            <div class="t" style="width:58%;"></div>
+          </div>
+          <div class="sc-piece" style="bottom:14%;left:12%;width:168px;height:104px;">
+            <div class="b" style="height:52px;margin-bottom:9px;background:rgba(168,255,53,0.07);"></div>
+            <div class="t" style="width:80%;margin-bottom:5px;"></div>
+            <div class="t" style="width:46%;"></div>
+          </div>
+          <div class="sc-piece" style="bottom:2%;right:14%;width:132px;height:118px;">
+            <div class="b" style="height:64px;margin-bottom:9px;"></div>
+            <div class="t" style="width:66%;"></div>
+          </div>
+          <div class="sc-piece" style="top:48%;left:38%;width:104px;height:104px;">
+            <div class="b" style="height:66px;background:radial-gradient(circle,rgba(168,255,53,0.22),transparent 70%);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 3 — OUR APPROACH
+       ================================================================ -->
+  <section class="slide" id="s3">
+    <div class="body cols">
+      <div class="col">
+        <div class="eyebrow">Our Approach</div>
+        <h2 class="h-m">WE BUILD A<br><span class="green">MARKETING SYSTEM.</span></h2>
+        <p class="sub" style="margin-top:24px;">We combine creative content, organic marketing and paid advertising into one connected strategy — so every piece of work feeds the next.</p>
+      </div>
+      <div class="col">
+        <div class="eco-wrap">
+          <div class="eco-ring r1"></div>
+          <div class="eco-ring r2"></div>
+          <div class="eco-core"><span class="t">The System</span><span class="b">GROWTH</span></div>
+          <div class="eco-node" data-econode style="top:2%;left:50%;"><span class="dot"></span><span class="nm">STRATEGY</span><span class="mini">Foundation</span></div>
+          <div class="eco-node" data-econode style="top:22%;left:88%;"><span class="dot"></span><span class="nm">CONTENT</span><span class="mini">Creative</span></div>
+          <div class="eco-node" data-econode style="top:60%;left:99%;"><span class="dot"></span><span class="nm">ORGANIC</span><span class="mini">Trust</span></div>
+          <div class="eco-node" data-econode style="top:92%;left:76%;"><span class="dot"></span><span class="nm">META ADS</span><span class="mini">Reach</span></div>
+          <div class="eco-node" data-econode style="top:92%;left:24%;"><span class="dot"></span><span class="nm">DATA</span><span class="mini">Insight</span></div>
+          <div class="eco-node" data-econode style="top:60%;left:1%;"><span class="dot"></span><span class="nm">OPTIMIZE</span><span class="mini">Refine</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 4 — UNDERSTAND THE BRAND FIRST
+       ================================================================ -->
+  <section class="slide" id="s4">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Phase 01 — Discovery</div>
+        <h2 class="h-m">BEFORE WE CREATE, <span class="green">WE UNDERSTAND.</span></h2>
+        <p class="sub" style="margin-top:18px;">Every strategy starts with understanding the business.</p>
+      </div>
+      <div class="dash">
+        <div class="dash-card" data-dc><div class="ic">01</div><div class="lbl">Business</div><div class="desc">Model, vision and goals</div></div>
+        <div class="dash-card" data-dc><div class="ic">02</div><div class="lbl">Product / Service</div><div class="desc">Offerings, value, strengths</div></div>
+        <div class="dash-card" data-dc><div class="ic">03</div><div class="lbl">Target Audience</div><div class="desc">Who we speak to</div></div>
+        <div class="dash-card" data-dc><div class="ic">04</div><div class="lbl">Market</div><div class="desc">Landscape &amp; dynamics</div></div>
+        <div class="dash-card" data-dc><div class="ic">05</div><div class="lbl">Competitors</div><div class="desc">Positioning &amp; gaps</div></div>
+        <div class="dash-card" data-dc><div class="ic">06</div><div class="lbl">Brand Positioning</div><div class="desc">Voice, identity, tone</div></div>
+        <div class="dash-card" data-dc><div class="ic">07</div><div class="lbl">Customer Problems</div><div class="desc">Pain points &amp; desires</div></div>
+        <div class="dash-card" data-dc><div class="ic">08</div><div class="lbl">Marketing Goals</div><div class="desc">Growth objectives</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 5 — AUDIENCE RESEARCH
+       ================================================================ -->
+  <section class="slide" id="s5">
+    <div class="body cols">
+      <div class="col">
+        <div class="eyebrow">Audience</div>
+        <h2 class="h-m">WHO ARE<br>WE TALKING TO?</h2>
+        <p class="sub" style="margin-top:24px;">Great marketing starts with reaching the right person with the right message.</p>
+      </div>
+      <div class="col">
+        <div class="aud-map">
+          <div class="aud-ring r1"></div>
+          <div class="aud-ring r2"></div>
+          <div class="aud-ring r3"></div>
+          <div class="core"><span class="t">Audience</span><span class="b">CORE</span></div>
+          <div class="aud-seg" data-as style="top:6%;left:50%;"><span class="mini">Layer 01</span>Demographics</div>
+          <div class="aud-seg" data-as style="top:26%;left:80%;"><span class="mini">Layer 02</span>Location</div>
+          <div class="aud-seg" data-as style="top:58%;left:88%;"><span class="mini">Layer 03</span>Interests</div>
+          <div class="aud-seg" data-as style="top:88%;left:74%;"><span class="mini">Layer 04</span>Behaviour</div>
+          <div class="aud-seg" data-as style="top:94%;left:28%;"><span class="mini">Layer 05</span>Problems</div>
+          <div class="aud-seg" data-as style="top:70%;left:10%;"><span class="mini">Layer 06</span>Needs</div>
+          <div class="aud-seg" data-as style="top:36%;left:6%;"><span class="mini">Layer 07</span>Buying Intent</div>
+          <div class="aud-seg" data-as style="top:12%;left:20%;"><span class="mini">Layer 08</span>Psychographics</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 6 — COMPETITOR & MARKET RESEARCH
+       ================================================================ -->
+  <section class="slide" id="s6">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Market Intelligence</div>
+        <h2 class="h-xx">KNOW THE MARKET. <span class="green">FIND THE OPPORTUNITY.</span></h2>
+      </div>
+      <div class="comp-grid">
+        <div class="comp-card" data-cc>
+          <div class="ch"><span class="brand">Analysis 01</span><span class="tag">Content</span></div>
+          <ul>
+            <li>Competitor Content</li>
+            <li>Creative Style</li>
+            <li>Offers &amp; Angles</li>
+          </ul>
+        </div>
+        <div class="comp-card" data-cc>
+          <div class="ch"><span class="brand">Analysis 02</span><span class="tag">Position</span></div>
+          <ul>
+            <li>Positioning</li>
+            <li>Audience Response</li>
+            <li>Engagement Quality</li>
+          </ul>
+        </div>
+        <div class="comp-card" data-cc>
+          <div class="ch"><span class="brand">Analysis 03</span><span class="tag">Opportunity</span></div>
+          <ul>
+            <li>Content Gaps</li>
+            <li>Market Opportunities</li>
+            <li>Differentiation Points</li>
+          </ul>
+        </div>
+      </div>
+      <div class="statement cc-statement">
+        <span class="rule"></span>
+        <span class="txt" style="font-size:22px;line-height:1.4;">We don't copy competitors.<br><span class="green">We identify opportunities to differentiate.</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 7 — CONTENT STRATEGY
+       ================================================================ -->
+  <section class="slide" id="s7">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Content Strategy</div>
+        <h2 class="h-xx">CONTENT <span class="green">WITH A PURPOSE.</span></h2>
+        <p class="sub" style="margin-top:18px;">Every piece of content has a job. We don't fill posting calendars — we build brands.</p>
+      </div>
+      <div class="pillars">
+        <span class="pillar-link" style="right:calc(50% + 98px);"></span>
+        <span class="pillar-link" style="left:calc(50% + 98px);"></span>
+        <div class="pillar-col">
+          <div class="pillar" data-p><div class="n">01</div><div class="nm">EDUCATE</div></div>
+          <div class="pillar" data-p><div class="n">02</div><div class="nm">BUILD TRUST</div></div>
+          <div class="pillar" data-p><div class="n">03</div><div class="nm">SHOWCASE</div></div>
+        </div>
+        <div class="pillar-core"><span class="t">North Star</span><span class="b">BRAND</span></div>
+        <div class="pillar-col">
+          <div class="pillar" data-p><div class="n">04</div><div class="nm">ENGAGE</div></div>
+          <div class="pillar" data-p><div class="n">05</div><div class="nm">CONVERT</div></div>
+          <div class="pillar" data-p><div class="n">06</div><div class="nm">BUILD BRAND</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 8 — CONTENT WE CAN CREATE
+       ================================================================ -->
+  <section class="slide" id="s8">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Production</div>
+        <h2 class="h-m">FROM IDEA <span class="green">TO CONTENT.</span></h2>
+      </div>
+      <div class="content-grid">
+        <div class="ctile" data-ct><div><div class="tag">Video</div><div class="lbl">Reels</div></div><span class="arr">→</span></div>
+        <div class="ctile" data-ct><div><div class="tag">Video</div><div class="lbl">Short-form Videos</div></div><span class="arr">→</span></div>
+        <div class="ctile" data-ct><div><div class="tag">Video</div><div class="lbl">Product Videos</div></div><span class="arr">→</span></div>
+        <div class="ctile" data-ct><div><div class="tag">Video</div><div class="lbl">Commercial Content</div></div><span class="arr">→</span></div>
+        <div class="ctile" data-ct><div><div class="tag">Content</div><div class="lbl">Educational Content</div></div><span class="arr">→</span></div>
+        <div class="ctile" data-ct><div><div class="tag">Content</div><div class="lbl">Promotional Content</div></div><span class="arr">→</span></div>
+        <div class="ctile" data-ct><div><div class="tag">Brand</div><div class="lbl">Behind The Scenes</div></div><span class="arr">→</span></div>
+        <div class="ctile" data-ct><div><div class="tag">Brand</div><div class="lbl">Brand Stories</div></div><span class="arr">→</span></div>
+        <div class="ctile" data-ct><div><div class="tag">Visuals</div><div class="lbl">Product Photography</div></div><span class="arr">→</span></div>
+        <div class="ctile" data-ct><div><div class="tag">Visuals</div><div class="lbl">Social Media Creatives</div></div><span class="arr">→</span></div>
+        <div class="ctile" data-ct><div><div class="tag">Design</div><div class="lbl">Posters / Graphics</div></div><span class="arr">→</span></div>
+        <div class="ctile inv" data-ct><div><div class="tag">Custom</div><div class="lbl">Made for your brand</div></div><span class="arr">+</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 9 — REELS STRATEGY
+       ================================================================ -->
+  <section class="slide" id="s9">
+    <div class="body cols wide-left">
+      <div class="col">
+        <div class="eyebrow">Short-form Content</div>
+        <h2 class="h-l" style="font-size:66px;">SHORT-FORM CONTENT<br>THAT <span class="green">EARNS ATTENTION.</span></h2>
+        <p class="sub sm" style="margin-top:20px;">We design short-form content around attention, retention and action.</p>
+        <div style="margin-top:26px;">
+          <div class="rs"><div class="rs-row"><span class="n">STEP 01</span><div><div class="t">Hook</div><div class="d">Stop the scroll in the first few seconds</div></div></div></div>
+          <div class="rs"><div class="rs-row"><span class="n">STEP 02</span><div><div class="t">Problem</div><div class="d">Connect with the viewer's real pain point</div></div></div></div>
+          <div class="rs"><div class="rs-row"><span class="n">STEP 03</span><div><div class="t">Value / Story</div><div class="d">Deliver insight, meaning or entertainment</div></div></div></div>
+          <div class="rs"><div class="rs-row"><span class="n">STEP 04</span><div><div class="t">Solution</div><div class="d">Present the brand as the natural answer</div></div></div></div>
+          <div class="rs"><div class="rs-row"><span class="n">STEP 05</span><div><div class="t">CTA</div><div class="d">A clear next step — engage, message, visit</div></div></div></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="reel-ui">
+          <div class="notch"></div>
+          <div class="screen">
+            <div class="bar-top"><span class="a">Reels</span><span class="b">●</span></div>
+            <div class="reel-line"></div>
+            <div class="reel-step" data-reel style="top:68px;"><span class="d">1</span><div><span class="b">HOOK</span><span class="s">0–3 seconds</span></div></div>
+            <div class="reel-step" data-reel style="top:148px;"><span class="d">2</span><div><span class="b">PROBLEM</span><span class="s">3–8 seconds</span></div></div>
+            <div class="reel-step" data-reel style="top:228px;"><span class="d">3</span><div><span class="b">VALUE / STORY</span><span class="s">8–20 seconds</span></div></div>
+            <div class="reel-step" data-reel style="top:308px;"><span class="d">4</span><div><span class="b">SOLUTION</span><span class="s">20–26 seconds</span></div></div>
+            <div class="reel-step" data-reel style="top:388px;"><span class="d">5</span><div><span class="b">CTA</span><span class="s">End</span></div></div>
+            <div class="side"><span class="ico">♥</span><span class="ico">◌</span><span class="ico">↗</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 10 — ORGANIC GROWTH
+       ================================================================ -->
+  <section class="slide" id="s10">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Organic</div>
+        <h2 class="h-l">ORGANIC GROWTH<br>IS A <span class="green">LONG-TERM GAME.</span></h2>
+        <p class="sub" style="margin-top:20px;">Organic growth focuses on building visibility, trust, authority and an active audience over time.</p>
+      </div>
+      <div class="formula">
+        <div class="f-row">
+          <span class="f-item">Consistent Content</span><span class="f-op">+</span>
+          <span class="f-item">Strong Positioning</span><span class="f-op">+</span>
+          <span class="f-item">Audience Engagement</span><span class="f-op">+</span>
+          <span class="f-item">Community Building</span><span class="f-op">+</span>
+          <span class="f-item">Data Analysis</span>
+        </div>
+        <div class="f-row">
+          <span class="f-op">=</span>
+          <span class="f-result">Organic Growth</span>
+        </div>
+      </div>
+      <div class="note org-note">
+        <p>Organic growth compounds. It builds a real audience around the brand — people who engage, share and choose you over time. It is earned through consistency and quality, not promised overnight.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 11 — ORGANIC GROWTH LOOP
+       ================================================================ -->
+  <section class="slide" id="s11">
+    <div class="body cols">
+      <div class="col">
+        <div class="eyebrow">The Organic Loop</div>
+        <h2 class="h-m">OUR ORGANIC<br><span class="green">GROWTH LOOP.</span></h2>
+        <p class="sub" style="margin-top:22px;">Marketing improves through continuous learning. Each cycle sharpens the next one.</p>
+      </div>
+      <div class="col">
+        <div class="loop-wrap">
+          <div class="loop-core"><span class="t">Continuous</span><span class="b">CYCLE</span></div>
+          <div class="loop-node" data-ln style="top:3%;left:50%;"><span class="mini">Step 01</span><span class="nm">RESEARCH</span></div>
+          <div class="loop-node" data-ln style="top:24%;left:84%;"><span class="mini">Step 02</span><span class="nm">CREATE</span></div>
+          <div class="loop-node" data-ln style="top:60%;left:92%;"><span class="mini">Step 03</span><span class="nm">PUBLISH</span></div>
+          <div class="loop-node" data-ln style="top:90%;left:72%;"><span class="mini">Step 04</span><span class="nm">ENGAGE</span></div>
+          <div class="loop-node" data-ln style="top:90%;left:26%;"><span class="mini">Step 05</span><span class="nm">ANALYSE</span></div>
+          <div class="loop-node" data-ln style="top:60%;left:8%;"><span class="mini">Step 06</span><span class="nm">IMPROVE</span></div>
+          <div class="loop-node" data-ln style="top:24%;left:16%;"><span class="mini">Step 07</span><span class="nm">CREATE AGAIN</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 12 — META ADS
+       ================================================================ -->
+  <section class="slide" id="s12">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Paid Advertising</div>
+        <h2 class="h-l" style="font-size:74px;">WHEN ORGANIC BUILDS TRUST,<br><span class="green">ADS ACCELERATE REACH.</span></h2>
+        <p class="sub" style="margin-top:20px;">Meta ads help brands reach targeted audiences across Meta platforms — the right message, in front of the right people, at scale.</p>
+      </div>
+      <div class="formula">
+        <div class="f-row">
+          <span class="f-item">Audience</span><span class="f-op">+</span>
+          <span class="f-item">Creative</span><span class="f-op">+</span>
+          <span class="f-item">Offer</span><span class="f-op">+</span>
+          <span class="f-item">Campaign Objective</span><span class="f-op">+</span>
+          <span class="f-item">Budget</span>
+        </div>
+        <div class="f-row">
+          <span class="f-op">=</span>
+          <span class="f-result">Paid Marketing System</span>
+        </div>
+      </div>
+      <div class="ad-strip ad-mock">
+        <span class="av">Ad</span>
+        <span class="who"><span class="n" style="display:block;">Sponsored</span><span class="s" style="display:block;">Social Platform</span></span>
+        <span class="msg">Your message, <span class="green">in front of the right people.</span></span>
+        <span class="cta">Learn More</span>
+      </div>
+      <p class="sub sm" style="text-align:center;margin:0 auto;max-width:760px;">Shown as a generic social advertising interface — the strategy, not the platform badge, is what matters.</p>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 13 — META ADS FUNNEL
+       ================================================================ -->
+  <section class="slide" id="s13">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Paid Funnel</div>
+        <h2 class="h-l" style="font-size:70px;">FROM ATTENTION <span class="green">TO ACTION.</span></h2>
+        <p class="sub" style="margin-top:18px;">Different audiences require different messages.</p>
+      </div>
+      <div class="funnel">
+        <div class="funnel-stage" data-fn style="width:100%;">
+          <span class="n">Stage 01</span><span class="l">AWARENESS</span><span class="d">Introduce the brand to new audiences</span>
+        </div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-stage" data-fn style="width:90%;">
+          <span class="n">Stage 02</span><span class="l">INTEREST</span><span class="d">Capture attention with relevant creative</span>
+        </div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-stage" data-fn style="width:78%;">
+          <span class="n">Stage 03</span><span class="l">CONSIDERATION</span><span class="d">Educate, build trust, show value</span>
+        </div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-stage" data-fn style="width:64%;">
+          <span class="n">Stage 04</span><span class="l">LEAD / ENQUIRY</span><span class="d">Invite action — message, form, visit</span>
+        </div>
+        <div class="funnel-arrow">↓</div>
+        <div class="funnel-stage last" data-fn style="width:50%;">
+          <span class="n">Stage 05</span><span class="l">CONVERSION</span><span class="d">Turn interest into customers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 14 — AD CREATIVE TESTING
+       ================================================================ -->
+  <section class="slide" id="s14">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Creative Testing</div>
+        <h2 class="h-xx">WE TEST. WE LEARN. <span class="green">WE OPTIMIZE.</span></h2>
+        <p class="sub" style="margin-top:16px;">Instead of relying on one creative, we use performance data to identify what works better.</p>
+      </div>
+      <div class="creatives">
+        <div class="creative v1" data-cr>
+          <span class="tag">Variant A</span>
+          <div class="mock"><span class="glow"></span></div>
+          <div><div class="lbl">Headline<br>Angle 01</div><span class="cta" style="display:inline-block;">Learn More</span></div>
+        </div>
+        <div class="creative v2" data-cr>
+          <span class="tag">Variant B</span>
+          <div class="mock"><span class="glow"></span><span class="glow2"></span></div>
+          <div><div class="lbl">Headline<br>Angle 02</div><span class="cta" style="display:inline-block;">Shop Now</span></div>
+        </div>
+        <div class="creative v3" data-cr>
+          <span class="tag">Variant C</span>
+          <div class="mock"></div>
+          <div><div class="lbl">Story-led<br>Angle</div><span class="cta" style="display:inline-block;">Watch</span></div>
+        </div>
+        <div class="creative v4" data-cr>
+          <span class="tag">Variant D</span>
+          <div class="mock"></div>
+          <div><div class="lbl">Offer-led<br>Angle</div><span class="cta" style="display:inline-block;">Send Message</span></div>
+        </div>
+      </div>
+      <div class="pills">
+        <span class="pill" data-tm>Audience Testing</span>
+        <span class="pill" data-tm>Creative Testing</span>
+        <span class="pill" data-tm>Messaging Testing</span>
+        <span class="pill" data-tm>Campaign Optimization</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 15 — TARGETING
+       ================================================================ -->
+  <section class="slide" id="s15">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Targeting</div>
+        <h2 class="h-m">RIGHT AUDIENCE. RIGHT MESSAGE. <span class="green">RIGHT MOMENT.</span></h2>
+      </div>
+      <div class="target-grid">
+        <div class="tg" data-tg><div class="n">01</div><div class="l">Location</div><div class="d">Reach people in the areas your business can actually serve.</div></div>
+        <div class="tg" data-tg><div class="n">02</div><div class="l">Interests</div><div class="d">Speak to people whose interests already align with your brand.</div></div>
+        <div class="tg" data-tg><div class="n">03</div><div class="l">Behaviour</div><div class="d">Reach audiences based on how they interact and buy online.</div></div>
+        <div class="tg" data-tg><div class="n">04</div><div class="l">Demographics</div><div class="d">Age, gender, profession and language — refined with purpose.</div></div>
+        <div class="tg" data-tg><div class="n">05</div><div class="l">Custom Audiences</div><div class="d">Connect with people who already know your brand.</div></div>
+        <div class="tg" data-tg><div class="n">06</div><div class="l">Retargeting</div><div class="d">Re-engage people who showed interest but didn't act yet.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 16 — RETARGETING
+       ================================================================ -->
+  <section class="slide" id="s16">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Retargeting</div>
+        <h2 class="h-l" style="font-size:66px;">NOT EVERY CUSTOMER CONVERTS <span class="green">THE FIRST TIME.</span></h2>
+      </div>
+      <div class="journey">
+        <div class="j-step" data-j><span class="mini">01</span><span class="nm">Viewed Content</span></div>
+        <span class="j-arrow">→</span>
+        <div class="j-step" data-j><span class="mini">02</span><span class="nm">Visited Profile / Website</span></div>
+        <span class="j-arrow">→</span>
+        <div class="j-step" data-j><span class="mini">03</span><span class="nm">Engaged</span></div>
+        <span class="j-arrow">→</span>
+        <div class="j-step" data-j><span class="mini">04</span><span class="nm">Left</span></div>
+        <span class="j-arrow">→</span>
+        <div class="j-step hl" data-j><span class="mini">05</span><span class="nm">Retarget</span></div>
+        <span class="j-arrow">→</span>
+        <div class="j-step" data-j><span class="mini">06</span><span class="nm">Return</span></div>
+        <span class="j-arrow">→</span>
+        <div class="j-step solid" data-j><span class="mini">07</span><span class="nm">Convert</span></div>
+      </div>
+      <div class="note rt-note">
+        <p>Retargeting keeps your brand in front of people who already showed interest — giving them more reasons to return. A strategic reminder, not pressure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 17 — ORGANIC + ADS TOGETHER
+       ================================================================ -->
+  <section class="slide" id="s17">
+    <div class="head">
+      <div class="eyebrow">The Combination</div>
+      <h2 class="h-l" style="font-size:64px;">THE REAL POWER IS <span class="green">THE COMBINATION.</span></h2>
+    </div>
+    <div class="body">
+      <div class="split" data-split>
+        <div class="half left">
+          <div class="label">01 / Organic</div>
+          <div class="ttl">ORGANIC</div>
+          <ul>
+            <li><span class="d"></span>Trust</li>
+            <li><span class="d"></span>Authority</li>
+            <li><span class="d"></span>Community</li>
+            <li><span class="d"></span>Brand</li>
+          </ul>
+        </div>
+        <div class="half right">
+          <div class="label">02 / Paid</div>
+          <div class="ttl">PAID</div>
+          <ul>
+            <li><span class="d"></span>Reach</li>
+            <li><span class="d"></span>Targeting</li>
+            <li><span class="d"></span>Testing</li>
+            <li><span class="d"></span>Acceleration</li>
+          </ul>
+        </div>
+      </div>
+      <div class="merged" data-merged>
+        <div class="l1">One Growth System</div>
+        <div class="l2">ONE GROWTH<br>SYSTEM.</div>
+        <div class="l3">Content builds the foundation. Ads amplify the opportunity.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 18 — MONTHLY MARKETING WORKFLOW
+       ================================================================ -->
+  <section class="slide" id="s18">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Operating Rhythm</div>
+        <h2 class="h-l" style="font-size:70px;">HOW <span class="green">WE WORK.</span></h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-track"></div>
+        <div class="tl-fill"></div>
+        <div class="tl-phases">
+          <div class="tl-phase" data-ph><div class="n">PHASE 01</div><div class="dot"></div><div class="lbl">Research &amp;<br>Strategy</div></div>
+          <div class="tl-phase" data-ph><div class="n">PHASE 02</div><div class="dot"></div><div class="lbl">Content<br>Planning</div></div>
+          <div class="tl-phase" data-ph><div class="n">PHASE 03</div><div class="dot"></div><div class="lbl">Production</div></div>
+          <div class="tl-phase" data-ph><div class="n">PHASE 04</div><div class="dot"></div><div class="lbl">Publishing</div></div>
+          <div class="tl-phase" data-ph><div class="n">PHASE 05</div><div class="dot"></div><div class="lbl">Meta<br>Campaigns</div></div>
+          <div class="tl-phase" data-ph><div class="n">PHASE 06</div><div class="dot"></div><div class="lbl">Analysis</div></div>
+          <div class="tl-phase" data-ph><div class="n">PHASE 07</div><div class="dot"></div><div class="lbl">Optimization</div></div>
+          <div class="tl-phase" data-ph><div class="n">PHASE 08</div><div class="dot"></div><div class="lbl">Next<br>Strategy</div></div>
+        </div>
+      </div>
+      <p class="sub sm" style="margin-top:8px;">A structured monthly cycle — each phase feeds the next, and every month gets smarter than the last.</p>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 19 — DATA & ANALYTICS
+       ================================================================ -->
+  <section class="slide" id="s19">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Analytics</div>
+        <h2 class="h-l" style="font-size:70px;">WE DON'T GUESS. <span class="green">WE READ THE DATA.</span></h2>
+      </div>
+      <div class="analytics">
+        <div class="kpi" data-kpi><div class="lbl">Reach</div><div class="val">—</div><div class="trend">▲ Growing</div></div>
+        <div class="kpi" data-kpi><div class="lbl">Engagement</div><div class="val">—</div><div class="trend">▲ Trending up</div></div>
+        <div class="kpi" data-kpi><div class="lbl">Profile Visits</div><div class="val">—</div><div class="trend">▲ Consistent</div></div>
+        <div class="kpi" data-kpi><div class="lbl">Cost Per Lead</div><div class="val">—</div><div class="trend" style="color:#cfd2cf;">● Optimizing</div></div>
+      </div>
+      <div class="chart" data-kpi>
+        <div class="chd">
+          <div class="t">Content &amp; Campaign Performance <em>— illustrative example</em></div>
+          <div class="lg"><span class="g">Reach</span><span class="w">Engagement</span></div>
+        </div>
+        <div class="bars" id="chartBars"></div>
+        <div class="x-axis" id="xAxis"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;">
+        <div class="pills">
+          <span class="pill" data-mm>Content Performance</span>
+          <span class="pill" data-mm>Leads</span>
+          <span class="pill" data-mm>Ad Efficiency</span>
+          <span class="pill" data-mm>Conversion Metrics</span>
+        </div>
+        <span class="demo-note">Demo data · not client results</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 20 — REPORTING
+       ================================================================ -->
+  <section class="slide" id="s20">
+    <div class="body cols wide-right">
+      <div class="col">
+        <div class="eyebrow">Reporting</div>
+        <h2 class="h-m">TRANSPARENT<br><span class="green">MARKETING.</span></h2>
+        <p class="sub" style="margin-top:18px;">Every cycle gives us new data to make the next cycle smarter.</p>
+        <ul class="rep-list">
+          <li class="ri"><span class="n">01</span><span class="t">What Worked</span></li>
+          <li class="ri"><span class="n">02</span><span class="t">What Didn't</span></li>
+          <li class="ri"><span class="n">03</span><span class="t">Best Content</span></li>
+          <li class="ri"><span class="n">04</span><span class="t">Campaign Performance</span></li>
+          <li class="ri"><span class="n">05</span><span class="t">Audience Insights</span></li>
+          <li class="ri"><span class="n">06</span><span class="t">Key Learnings</span></li>
+          <li class="ri"><span class="n">07</span><span class="t">Next Month's Direction</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="report" data-rep>
+          <div class="rh"><span class="t">Monthly Report</span><span class="m">● Demo</span></div>
+          <div class="sec">
+            <div class="st">Overview</div>
+            <div class="it"><span>Reach</span><span class="v">Growing</span></div>
+            <div class="it"><span>Engagement Rate</span><span class="v">Healthy</span></div>
+            <div class="it"><span>Best Performing Format</span><span class="v">Reels</span></div>
+          </div>
+          <div class="sec">
+            <div class="st">Key Insights</div>
+            <div class="it"><span>Audience Growth</span><span class="v">Positive</span></div>
+            <div class="it"><span>Top Content Theme</span><span class="v">Educational</span></div>
+            <div class="it"><span>Creative Learning</span><span class="v">Angle B</span></div>
+          </div>
+          <div class="sec">
+            <div class="st">Next Month</div>
+            <div class="next">→ Strategy built on this cycle's data</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 21 — WHAT MAKES US DIFFERENT
+       ================================================================ -->
+  <section class="slide" id="s21">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Creative Team Production</div>
+        <h2 class="h-l" style="font-size:68px;">WE THINK LIKE CREATORS. <span class="green">WE WORK LIKE MARKETERS.</span></h2>
+      </div>
+      <div class="diff-grid">
+        <div class="df" data-df><div class="ic">01</div><div class="l">Creative<br>Thinking</div></div>
+        <div class="df" data-df><div class="ic">02</div><div class="l">Strategic<br>Planning</div></div>
+        <div class="df" data-df><div class="ic">03</div><div class="l">Content<br>Production</div></div>
+        <div class="df" data-df><div class="ic">04</div><div class="l">Paid<br>Advertising</div></div>
+        <div class="df" data-df><div class="ic">05</div><div class="l">Data &amp;<br>Optimization</div></div>
+      </div>
+      <div class="statement df-final">
+        <span class="rule"></span>
+        <span class="txt" style="font-size:25px;line-height:1.35;">Not just content.<br><span class="green">A complete marketing approach.</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 22 — THE GROWTH MINDSET
+       ================================================================ -->
+  <section class="slide" id="s22">
+    <div class="body">
+      <div class="head">
+        <div class="eyebrow">Mindset</div>
+        <h2 class="h-m">MARKETING IS NOT A <span class="green">ONE-TIME CAMPAIGN.</span></h2>
+        <p class="sub" style="margin-top:18px;">Real growth comes from continuous improvement.</p>
+      </div>
+      <div class="mind">
+        <div class="ml">TEST</div>
+        <span class="ml-a">→</span>
+        <div class="ml">LEARN</div>
+        <span class="ml-a">→</span>
+        <div class="ml">OPTIMIZE</div>
+        <span class="ml-a">→</span>
+        <div class="ml solid">SCALE</div>
+        <span class="ml-a">↻</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 23 — OUR PROCESS IN ONE FRAME
+       ================================================================ -->
+  <section class="slide" id="s23">
+    <div class="body cols">
+      <div class="col">
+        <div class="eyebrow">The Complete System</div>
+        <h2 class="h-m">ONE SYSTEM.<br>ONE DIRECTION.<br><span class="green">CONTINUOUS GROWTH.</span></h2>
+        <p class="sub" style="margin-top:22px;">Every stage of the process connects to the next — nothing works in isolation.</p>
+      </div>
+      <div class="col">
+        <div class="sys">
+          <div class="sys-node" data-sn>RESEARCH</div>
+          <div class="sys-arrow">↓</div>
+          <div class="sys-node" data-sn>STRATEGY</div>
+          <div class="sys-arrow">↓</div>
+          <div class="sys-node" data-sn>CONTENT</div>
+          <div class="sys-arrow">↓</div>
+          <div class="sys-node" data-sn>ORGANIC</div>
+          <div class="sys-arrow">↓</div>
+          <div class="sys-node" data-sn>ADS</div>
+          <div class="sys-arrow">↓</div>
+          <div class="sys-node" data-sn>DATA</div>
+          <div class="sys-arrow">↓</div>
+          <div class="sys-node" data-sn>OPTIMIZATION</div>
+          <div class="sys-arrow">↓</div>
+          <div class="sys-node hl" data-sn>GROWTH</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SLIDE 24 — FINAL
+       ================================================================ -->
+  <section class="slide" id="s24">
+    <div class="cinematic-frame"><div class="bg-blur"></div></div>
+    <div class="orb" style="width:680px;height:680px;top:14%;left:50%;margin-left:-340px;opacity:0;"></div>
+
+    <div class="final-center">
+      <h1 class="h-xl" style="text-align:center;">
+        <span class="fl"><span>LET'S BUILD SOMETHING</span></span>
+        <span class="fl" style="margin-top:6px;"><span class="green">PEOPLE REMEMBER.</span></span>
+      </h1>
+
+      <div class="final-sub">Creative Team Production</div>
+      <div class="final-tag">Create • Shoot • Grow</div>
+
+      <div class="final-neon"></div>
+
+      <div class="final-meta">
+        <div><div class="lbl">Contact</div><div class="val">+91 9755550380</div></div>
+        <div><div class="lbl">Location</div><div class="val">Indore, India</div></div>
+      </div>
+
+      <!-- Official logo slot on the closing frame -->
+      <div class="final-logo">
+        <img alt="Creative Team Production" data-logo style="display:none;">
+        <div class="final-fallback" id="finalFallback">
+          <span class="l1">CREATIVE TEAM PRODUCTION</span>
+          <span class="l2">I N D O R E</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ navigation ============ -->
+  <div class="nav">
+    <div class="progress" id="progress"><div class="bar" id="progressBar"></div></div>
+    <div class="counter"><b id="curNum">01</b> / 24 &nbsp;·&nbsp; <span id="slideLabel">Cover</span></div>
+    <div class="hint">◄ ► <span>or click</span> &nbsp;·&nbsp; P <span>for PDF</span></div>
+  </div>
+
+</div>
+</div>
+
+<!-- GSAP — vendored locally, no CDN dependency -->
+<script src="vendor/gsap.min.js"></script>
+
+<script>
+/* ================================================================
+   CREATIVE TEAM PRODUCTION — Presentation Engine
+   24 slides · cinematic transitions · keyboard + pointer navigation
+   ================================================================ */
+
+var slideLabels = [
+  "Cover","The Problem","Our Approach","Understand The Brand",
+  "Audience Research","Market Research","Content Strategy",
+  "Content We Create","Reels Strategy","Organic Growth",
+  "Organic Loop","Meta Ads","Ads Funnel","Creative Testing",
+  "Targeting","Retargeting","Organic + Ads","Workflow",
+  "Data & Analytics","Reporting","What Makes Us Different",
+  "Growth Mindset","One System","Final"
+];
+
+/* ---------------------------------------------------------------
+   SAFETY LAYER
+   Empty selections are silently skipped so a missing element can
+   never throw or stall a slide's animation.
+   --------------------------------------------------------------- */
+function isEmptyTarget(t){
+  return t == null ||
+    (typeof t === 'object' && t.length === 0 && !t.nodeType && !(t instanceof Element));
+}
+
+(function guardGsapSet(){
+  var realSet = gsap.set;
+  gsap.set = function(target, vars){
+    if (isEmptyTarget(target)) return gsap;
+    return realSet.apply(gsap, arguments);
+  };
+})();
+
+function timeline(opts){
+  var tl = gsap.timeline(opts);
+  var realTo = tl.to;
+  tl.to = function(target, vars, pos){
+    if (isEmptyTarget(target)) return tl;
+    return pos === undefined ? realTo.call(tl, target, vars) : realTo.call(tl, target, vars, pos);
+  };
+  return tl;
+}
+
+/* ---------------------------------------------------------------
+   OFFICIAL LOGO LOADER
+   Looks for the official logo at assets/logo.svg, then assets/logo.png.
+   If neither file is present it reveals the typographic wordmark.
+   Nothing here draws or invents a logo mark.
+   --------------------------------------------------------------- */
+(function loadOfficialLogo(){
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('img[data-logo]'));
+  var fallbacks = Array.prototype.slice.call(document.querySelectorAll('#logoFallback, #finalFallback'));
+  var candidates = ['assets/logo.svg', 'assets/logo.png'];
+
+  function useLogo(url){
+    imgs.forEach(function(img){ img.src = url; img.style.display = 'block'; });
+    fallbacks.forEach(function(f){ f.style.display = 'none'; });
+  }
+  function useWordmark(){
+    imgs.forEach(function(img){ img.style.display = 'none'; });
+    fallbacks.forEach(function(f){ f.style.display = 'flex'; });
+  }
+  (function attempt(n){
+    if (n >= candidates.length) { useWordmark(); return; }
+    var probe = new Image();
+    probe.onload  = function(){ useLogo(candidates[n]); };
+    probe.onerror = function(){ attempt(n + 1); };
+    probe.src = candidates[n];
+  })(0);
+})();
+
+var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+var total = slides.length;
+var cur = 0;
+var busy = false;
+var slideTweens = [];   /* main entrance timelines */
+var loopTweens  = [];   /* decorative infinite loops (pulses, spins) */
+
+var slideNumEl   = document.getElementById('slideNum');
+var curNumEl     = document.getElementById('curNum');
+var progressBar  = document.getElementById('progressBar');
+var slideLabelEl = document.getElementById('slideLabel');
+var pad = function(n){ return String(n + 1).padStart(2, '0'); };
+var q  = function(i, sel){ return slides[i].querySelector(sel); };
+var qa = function(i, sel){ return slides[i].querySelectorAll(sel); };
+
+/* -------- stage scaling (16:9 always fits) -------- */
+function scaleStage(){
+  var stage = document.getElementById('stage');
+  var scale = Math.min(window.innerWidth / 1600, window.innerHeight / 900);
+  stage.style.transform = 'scale(' + scale + ')';
+}
+window.addEventListener('resize', scaleStage);
+scaleStage();
+
+/* ================================================================
+   ONE-TIME DOM ENHANCEMENTS (created once, never duplicated)
+   ================================================================ */
+function mk(tag, cls){
+  var e = document.createElement(tag);
+  if (cls) e.className = cls;
+  return e;
+}
+
+/* analytics chart — illustrative demo data */
+(function buildChart(){
+  var bars = document.getElementById('chartBars');
+  var axis = document.getElementById('xAxis');
+  if (!bars || !axis) return;
+  var months = ['W1','W2','W3','W4','W5','W6','W7','W8'];
+  var reach  = [40, 55, 48, 70, 62, 80, 75, 92];
+  var eng    = [30, 42, 38, 55, 50, 60, 68, 72];
+  months.forEach(function(m, i){
+    var col = mk('div', 'col');
+    var bl  = mk('div', 'bar-l'); bl.dataset.h = eng[i];
+    var b   = mk('div', 'bar');   b.dataset.h  = reach[i];
+    col.appendChild(bl); col.appendChild(b);
+    bars.appendChild(col);
+    var sp = mk('span'); sp.textContent = m; axis.appendChild(sp);
+  });
+})();
+
+/* accent bars, shine layers, neon rules */
+document.querySelectorAll('[data-step]').forEach(function(s){ s.appendChild(mk('div','flow-bar')); });
+document.querySelectorAll('[data-dc]').forEach(function(s){ s.appendChild(mk('div','dash-bar')); });
+document.querySelectorAll('[data-ct]').forEach(function(s){ s.appendChild(mk('div','ct-shine')); });
+(function(){
+  var cn = document.querySelector('#s1 .cover-neon');
+  if (cn && !cn.querySelector('.cover-line')) cn.appendChild(mk('div','cover-line'));
+  var fn = document.querySelector('#s24 .final-neon');
+  if (fn && !fn.querySelector('.final-line-neon')) fn.appendChild(mk('div','final-line-neon'));
+  var lw = document.querySelector('#s11 .loop-wrap');
+  if (lw && !lw.querySelector('.loop-ring')) lw.appendChild(mk('div','loop-ring'));
+})();
+
+/* ================================================================
+   RESET — return a slide's animated elements to their start state
+   ================================================================ */
+var SCATTER_ROT = [12, -14, -9, 15, 10];
+
+function setIf(nodes, vars){
+  if (nodes && nodes.length) gsap.set(nodes, vars);
+}
+
+function resetSlide(i){
+  var s = slides[i];
+
+  /* every slide but the final frame opens with an eyebrow */
+  setIf(qa(i,'.eyebrow'), {opacity:0, y:22});
+
+  switch (i) {
+
+    case 0: /* COVER */
+      gsap.set(qa(i,'.word'), {yPercent:118, opacity:0});
+      gsap.set(q(i,'.cover-sub .inner'), {yPercent:130, opacity:0});
+      gsap.set(qa(i,'.cover-meta .inner'), {yPercent:110, opacity:0});
+      gsap.set(q(i,'.cover-line'), {scaleX:0, opacity:1});
+      gsap.set(qa(i,'.orb'), {opacity:0});
+      break;
+
+    case 1: /* PROBLEM */
+      gsap.set(q(i,'h2'), {opacity:0, y:46});
+      gsap.set(qa(i,'[data-step]'), {opacity:0, x:-44});
+      gsap.set(qa(i,'.flow-bar'), {scaleY:0});
+      gsap.set(qa(i,'.sc-piece'), {opacity:0, rotation:function(idx){ return SCATTER_ROT[idx % 5]; }});
+      gsap.set(q(i,'.statement'), {opacity:0, y:24});
+      break;
+
+    case 2: /* APPROACH */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      gsap.set(q(i,'.eco-core'), {opacity:0, scale:0.6});
+      gsap.set(qa(i,'.eco-ring'), {opacity:0});
+      gsap.set(qa(i,'[data-econode]'), {opacity:0, scale:0.7});
+      break;
+
+    case 3: /* UNDERSTAND */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      gsap.set(qa(i,'[data-dc]'), {opacity:0, y:34});
+      gsap.set(qa(i,'.dash-bar'), {height:0});
+      break;
+
+    case 4: /* AUDIENCE */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      gsap.set(q(i,'.aud-map .core'), {opacity:0, scale:0.5});
+      gsap.set(qa(i,'.aud-ring'), {opacity:0, scale:0.85});
+      gsap.set(qa(i,'[data-as]'), {opacity:0, scale:0.6});
+      break;
+
+    case 5: /* COMPETITOR */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(qa(i,'[data-cc]'), {opacity:0, y:24});
+      gsap.set(q(i,'.cc-statement'), {opacity:0, x:-26});
+      break;
+
+    case 6: /* PILLARS */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      gsap.set(q(i,'.pillar-core'), {opacity:0, scale:0.6});
+      gsap.set(qa(i,'.pillar-link'), {opacity:0, scaleX:0});
+      gsap.set(qa(i,'[data-p]'), {opacity:0, scale:0.86});
+      break;
+
+    case 7: /* CONTENT TYPES */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(qa(i,'[data-ct]'), {opacity:0, y:26});
+      gsap.set(qa(i,'.ct-shine'), {width:0});
+      break;
+
+    case 8: /* REELS */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      gsap.set(q(i,'.reel-ui'), {opacity:0, x:70, scale:0.96});
+      gsap.set(qa(i,'.rs'), {opacity:0, x:-22});
+      qa(i,'.reel-step').forEach(function(st){ st.classList.remove('active'); });
+      break;
+
+    case 9: /* ORGANIC FORMULA */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      gsap.set(qa(i,'.f-item'), {opacity:0, y:24});
+      gsap.set(qa(i,'.f-op'), {opacity:0});
+      gsap.set(q(i,'.f-result'), {opacity:0, scale:0.9});
+      gsap.set(q(i,'.org-note'), {opacity:0, x:-24});
+      break;
+
+    case 10: /* ORGANIC LOOP */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      gsap.set(q(i,'.loop-core'), {opacity:0, scale:0.5});
+      gsap.set(q(i,'.loop-ring'), {opacity:0});
+      gsap.set(qa(i,'[data-ln]'), {opacity:0, scale:0.7});
+      break;
+
+    case 11: /* META ADS */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      gsap.set(qa(i,'.f-item'), {opacity:0, y:24});
+      gsap.set(qa(i,'.f-op'), {opacity:0});
+      gsap.set(q(i,'.f-result'), {opacity:0, scale:0.9});
+      gsap.set(q(i,'.ad-mock'), {opacity:0, y:24});
+      break;
+
+    case 12: /* FUNNEL */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      gsap.set(qa(i,'[data-fn]'), {opacity:0, scaleX:0.55});
+      gsap.set(qa(i,'.funnel-arrow'), {opacity:0});
+      break;
+
+    case 13: /* CREATIVE TESTING */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      gsap.set(qa(i,'[data-cr]'), {opacity:0, y:34});
+      gsap.set(qa(i,'[data-tm]'), {opacity:0, y:14});
+      break;
+
+    case 14: /* TARGETING */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(qa(i,'[data-tg]'), {opacity:0, y:26});
+      break;
+
+    case 15: /* RETARGETING */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(qa(i,'[data-j]'), {opacity:0, y:24});
+      gsap.set(qa(i,'.j-arrow'), {opacity:0});
+      gsap.set(q(i,'.rt-note'), {opacity:0, x:-24});
+      break;
+
+    case 16: /* SPLIT → MERGE */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'[data-split]'), {opacity:0, pointerEvents:'none'});
+      gsap.set(q(i,'.left'), {opacity:0, x:-70});
+      gsap.set(q(i,'.right'), {opacity:0, x:70});
+      gsap.set(qa(i,'[data-split] li'), {opacity:0});
+      gsap.set(q(i,'[data-merged]'), {opacity:0, pointerEvents:'none'});
+      gsap.set(qa(i,'[data-merged] > *'), {opacity:0, y:30});
+      break;
+
+    case 17: /* WORKFLOW */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(qa(i,'[data-ph]'), {opacity:0, y:26});
+      gsap.set(qa(i,'.tl-phase .dot'), {
+        borderColor:'rgba(255,255,255,0.22)', backgroundColor:'#070808', boxShadow:'none', scale:1
+      });
+      gsap.set(q(i,'.tl-fill'), {width:'0%'});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      break;
+
+    case 18: /* ANALYTICS */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(qa(i,'[data-kpi]'), {opacity:0, y:20});
+      gsap.set(qa(i,'.bars .bar, .bars .bar-l'), {height:'0%'});
+      qa(i,'.kpi .val').forEach(function(el){ el.textContent = '—'; });
+      gsap.set(qa(i,'[data-mm]'), {opacity:0, y:14});
+      gsap.set(q(i,'.demo-note'), {opacity:0});
+      break;
+
+    case 19: /* REPORTING */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      gsap.set(qa(i,'.ri'), {opacity:0, x:-26});
+      gsap.set(q(i,'[data-rep]'), {opacity:0, y:34});
+      break;
+
+    case 20: /* DIFFERENT */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(qa(i,'[data-df]'), {opacity:0, y:26});
+      gsap.set(q(i,'.df-final'), {opacity:0, y:22});
+      break;
+
+    case 21: /* MINDSET */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      gsap.set(qa(i,'.ml'), {opacity:0, y:24});
+      gsap.set(qa(i,'.ml-a'), {opacity:0});
+      break;
+
+    case 22: /* ONE SYSTEM */
+      gsap.set(q(i,'h2'), {opacity:0, y:40});
+      gsap.set(q(i,'.sub'), {opacity:0, y:20});
+      gsap.set(qa(i,'[data-sn]'), {opacity:0, scaleY:0.6});
+      gsap.set(qa(i,'.sys-arrow'), {opacity:0});
+      break;
+
+    case 23: /* FINAL */
+      gsap.set(qa(i,'.fl span'), {yPercent:118});
+      gsap.set(q(i,'.final-sub'), {opacity:0, y:30});
+      gsap.set(q(i,'.final-tag'), {opacity:0, y:20});
+      gsap.set(q(i,'.final-meta'), {opacity:0, y:20});
+      gsap.set(q(i,'.final-logo'), {opacity:0, y:22});
+      gsap.set(q(i,'.final-line-neon'), {scaleX:0, opacity:1});
+      gsap.set(qa(i,'.orb'), {opacity:0});
+      gsap.set(q(i,'.final-center h1'), {opacity:1});
+      break;
+  }
+}
+
+/* ================================================================
+   ANIMATE — build the entrance timeline for a slide
+   ================================================================ */
+function animSlide(i){
+  var tl = timeline({defaults:{ease:'power3.out'}});
+
+  var track = function(t){ slideTweens.push(t); return t; };
+  var trackLoop = function(t){ loopTweens.push(t); slideTweens.push(t); return t; };
+
+  switch (i) {
+
+    /* ---- SLIDE 1 · COVER ---- */
+    case 0:
+      tl.to(qa(i,'.orb'), {opacity:0.32, duration:1.6}, 0)
+        .to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(qa(i,'.word'), {yPercent:0, opacity:1, duration:1.0, stagger:0.075}, 0.35)
+        .to(q(i,'.cover-sub .inner'), {yPercent:0, opacity:1, duration:0.9}, 1.0)
+        .to(q(i,'.cover-line'), {scaleX:1, duration:1.4, ease:'power2.inOut'}, 1.1)
+        .to(qa(i,'.cover-meta .inner'), {yPercent:0, opacity:1, duration:0.8, stagger:0.14}, 1.45);
+      break;
+
+    /* ---- SLIDE 2 · PROBLEM ---- */
+    case 1:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(qa(i,'.sc-piece'), {opacity:0.75, duration:0.7, stagger:0.09}, 0.5)
+        .to(qa(i,'[data-step]'), {opacity:1, x:0, duration:0.6, stagger:0.13}, 0.85)
+        .to(qa(i,'.flow-bar'), {scaleY:1, duration:0.35, stagger:0.13}, 1.0)
+        .to(q(i,'.statement'), {opacity:1, y:0, duration:0.8}, '+=0.3');
+      break;
+
+    /* ---- SLIDE 3 · APPROACH ---- */
+    case 2:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.85}, 0.25)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 0.5)
+        .to(qa(i,'.eco-ring'), {opacity:1, duration:0.8, stagger:0.12}, 0.6)
+        .to(q(i,'.eco-core'), {opacity:1, scale:1, duration:0.9}, 0.8)
+        .to(qa(i,'[data-econode]'), {opacity:1, scale:1, duration:0.7, stagger:{amount:0.7}}, 1.0);
+      trackLoop(gsap.to(qa(i,'.eco-node .dot'), {
+        boxShadow:'0 0 0 13px rgba(168,255,53,0)', duration:1.9, repeat:-1, ease:'power1.out'
+      }));
+      break;
+
+    /* ---- SLIDE 4 · UNDERSTAND ---- */
+    case 3:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.85}, 0.25)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 0.5)
+        .to(qa(i,'[data-dc]'), {opacity:1, y:0, duration:0.6, stagger:0.085}, 0.75)
+        .to(qa(i,'.dash-bar'), {height:'100%', duration:0.45, stagger:0.085}, 0.95);
+      break;
+
+    /* ---- SLIDE 5 · AUDIENCE ---- */
+    case 4:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.85}, 0.25)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 0.5)
+        .to(qa(i,'.aud-ring'), {opacity:1, scale:1, duration:0.9, stagger:0.14}, 0.6)
+        .to(q(i,'.aud-map .core'), {opacity:1, scale:1, duration:0.9}, 0.8)
+        .to(qa(i,'[data-as]'), {opacity:1, scale:1, duration:0.65, stagger:{amount:0.85}}, 0.95);
+      break;
+
+    /* ---- SLIDE 6 · COMPETITOR ---- */
+    case 5:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(qa(i,'[data-cc]'), {opacity:1, y:0, duration:0.7, stagger:0.15}, 0.7)
+        .to(q(i,'.cc-statement'), {opacity:1, x:0, duration:0.8}, '+=0.3');
+      break;
+
+    /* ---- SLIDE 7 · PILLARS ---- */
+    case 6:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 0.5)
+        .to(q(i,'.pillar-core'), {opacity:1, scale:1, duration:0.9}, 0.7)
+        .to(qa(i,'.pillar-link'), {opacity:1, scaleX:1, duration:0.5, stagger:0.1}, 0.9)
+        .to(qa(i,'[data-p]'), {opacity:1, scale:1, duration:0.6, stagger:{amount:0.6, from:'center'}}, 1.0);
+      break;
+
+    /* ---- SLIDE 8 · CONTENT TYPES ---- */
+    case 7:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(qa(i,'[data-ct]'), {opacity:1, y:0, duration:0.55, stagger:{amount:0.75}}, 0.6)
+        .to(qa(i,'.ct-shine'), {width:'100%', duration:0.5, stagger:{amount:0.75}}, 0.75);
+      break;
+
+    /* ---- SLIDE 9 · REELS ---- */
+    case 8:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 0.5)
+        .to(q(i,'.reel-ui'), {opacity:1, x:0, scale:1, duration:1.0}, 0.6)
+        .to(qa(i,'.rs'), {opacity:1, x:0, duration:0.55, stagger:0.12}, 0.85);
+
+      (function(){
+        var steps = qa(i,'.reel-step');
+        steps.forEach(function(st, n){
+          tl.call(function(){
+            steps.forEach(function(x){ x.classList.remove('active'); });
+            steps[n].classList.add('active');
+          }, null, 1.9 + n * 0.8);
+        });
+      })();
+      break;
+
+    /* ---- SLIDE 10 · ORGANIC FORMULA ---- */
+    case 9:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 0.5)
+        .to(qa(i,'.f-item'), {opacity:1, y:0, duration:0.5, stagger:0.09}, 0.8)
+        .to(qa(i,'.f-op'), {opacity:1, duration:0.3, stagger:0.07}, 1.0)
+        .to(q(i,'.f-result'), {opacity:1, scale:1, duration:0.7, ease:'back.out(1.5)'}, 1.45)
+        .to(q(i,'.org-note'), {opacity:1, x:0, duration:0.8}, 1.8);
+      break;
+
+    /* ---- SLIDE 11 · ORGANIC LOOP ---- */
+    case 10:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 0.5)
+        .to(q(i,'.loop-core'), {opacity:1, scale:1, duration:0.9}, 0.7)
+        .to(q(i,'.loop-ring'), {opacity:1, duration:0.8}, 0.9)
+        .to(qa(i,'[data-ln]'), {opacity:1, scale:1, duration:0.6, stagger:{amount:0.9}}, 1.0);
+      trackLoop(gsap.to(q(i,'.loop-ring'), {rotation:360, duration:50, repeat:-1, ease:'none'}));
+      trackLoop(gsap.to(qa(i,'[data-ln]'), {
+        boxShadow:'0 0 22px rgba(168,255,53,0.22)', duration:1.7, repeat:-1, yoyo:true,
+        ease:'sine.inOut', stagger:{amount:0.9}
+      }));
+      break;
+
+    /* ---- SLIDE 12 · META ADS ---- */
+    case 11:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 0.5)
+        .to(qa(i,'.f-item'), {opacity:1, y:0, duration:0.5, stagger:0.09}, 0.8)
+        .to(qa(i,'.f-op'), {opacity:1, duration:0.3, stagger:0.07}, 1.0)
+        .to(q(i,'.f-result'), {opacity:1, scale:1, duration:0.7, ease:'back.out(1.5)'}, 1.45)
+        .to(q(i,'.ad-mock'), {opacity:1, y:0, duration:0.8}, 1.75);
+      break;
+
+    /* ---- SLIDE 13 · FUNNEL ---- */
+    case 12:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 0.5);
+      (function(){
+        var stages = qa(i,'[data-fn]');
+        var arrows = qa(i,'.funnel-arrow');
+        stages.forEach(function(st, n){
+          tl.to(st, {opacity:1, scaleX:1, duration:0.6}, 0.8 + n * 0.5);
+          if (arrows[n]) tl.to(arrows[n], {opacity:1, duration:0.3}, 1.0 + n * 0.5);
+        });
+      })();
+      break;
+
+    /* ---- SLIDE 14 · CREATIVE TESTING ---- */
+    case 13:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:1.0}, 0.25)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 0.6)
+        .to(qa(i,'[data-cr]'), {opacity:1, y:0, duration:0.65, stagger:0.11}, 0.8)
+        .to(qa(i,'[data-tm]'), {opacity:1, y:0, duration:0.45, stagger:0.08}, 1.6);
+      break;
+
+    /* ---- SLIDE 15 · TARGETING ---- */
+    case 14:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:1.0}, 0.25)
+        .to(qa(i,'[data-tg]'), {opacity:1, y:0, duration:0.6, stagger:0.1}, 0.75);
+      break;
+
+    /* ---- SLIDE 16 · RETARGETING ---- */
+    case 15:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(qa(i,'[data-j]'), {opacity:1, y:0, duration:0.5, stagger:0.11}, 0.7)
+        .to(qa(i,'.j-arrow'), {opacity:1, duration:0.25, stagger:0.11}, 0.8)
+        .to(q(i,'.rt-note'), {opacity:1, x:0, duration:0.8}, '+=0.3');
+      break;
+
+    /* ---- SLIDE 17 · SPLIT → MERGE ---- */
+    case 16:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(q(i,'[data-split]'), {opacity:1, duration:0.5}, 0.7)
+        .to(q(i,'.left'),  {opacity:1, x:0, duration:0.9}, 0.7)
+        .to(q(i,'.right'), {opacity:1, x:0, duration:0.9}, 0.85)
+        .to(qa(i,'[data-split] li'), {opacity:1, duration:0.4, stagger:0.08}, 1.15)
+        .to(q(i,'[data-split]'), {opacity:0, duration:0.7}, '+=2.0')
+        .to(q(i,'[data-merged]'), {opacity:1, duration:0.6}, '-=0.3')
+        .to(qa(i,'[data-merged] > *'), {opacity:1, y:0, duration:0.8, stagger:0.16}, '-=0.2');
+      break;
+
+    /* ---- SLIDE 18 · WORKFLOW ---- */
+    case 17:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.85}, 0.25)
+        .to(qa(i,'[data-ph]'), {opacity:1, y:0, duration:0.5, stagger:0.08}, 0.6)
+        .to(qa(i,'.tl-phase .dot'), {
+          borderColor:'#A8FF35', backgroundColor:'#A8FF35',
+          boxShadow:'0 0 16px #A8FF35', duration:0.35, stagger:0.14
+        }, 1.0)
+        .to(q(i,'.tl-fill'), {width:'100%', duration:1.5, ease:'power2.inOut'}, 1.0)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 2.0);
+      break;
+
+    /* ---- SLIDE 19 · ANALYTICS ---- */
+    case 18:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(qa(i,'[data-kpi]'), {opacity:1, y:0, duration:0.6, stagger:0.09}, 0.6)
+        .to(qa(i,'[data-mm]'), {opacity:1, y:0, duration:0.45, stagger:0.07}, 1.5)
+        .to(q(i,'.demo-note'), {opacity:1, duration:0.6}, 1.9);
+
+      qa(i,'.bars .bar').forEach(function(b, n){
+        var h = (Number(b.dataset.h) || 40) * 0.86;
+        tl.to(b, {height: h + '%', duration:0.9, ease:'power3.out'}, 1.0 + n * 0.05);
+      });
+      qa(i,'.bars .bar-l').forEach(function(b, n){
+        var h = (Number(b.dataset.h) || 30) * 0.86;
+        tl.to(b, {height: h + '%', duration:0.9, ease:'power3.out'}, 1.05 + n * 0.05);
+      });
+
+      (function(){
+        var KPI = [
+          {to:128, dec:0, suffix:'K', prefix:''},
+          {to:6.4, dec:1, suffix:'%', prefix:''},
+          {to:4.2, dec:1, suffix:'K', prefix:''},
+          {to:8,   dec:0, suffix:'%', prefix:'▼ '}
+        ];
+        qa(i,'.kpi .val').forEach(function(node, n){
+          var cfg = KPI[n] || KPI[0];
+          var proxy = {v:0};
+          tl.to(proxy, {
+            v: cfg.to, duration:1.3, ease:'power2.out',
+            onUpdate: function(){
+              node.textContent = cfg.prefix + proxy.v.toFixed(cfg.dec) + cfg.suffix;
+            }
+          }, 0.9 + n * 0.1);
+        });
+      })();
+      break;
+
+    /* ---- SLIDE 20 · REPORTING ---- */
+    case 19:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 0.5)
+        .to(qa(i,'.ri'), {opacity:1, x:0, duration:0.45, stagger:0.09}, 0.75)
+        .to(q(i,'[data-rep]'), {opacity:1, y:0, duration:0.9}, 1.0);
+      break;
+
+    /* ---- SLIDE 21 · DIFFERENT ---- */
+    case 20:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(qa(i,'[data-df]'), {opacity:1, y:0, duration:0.6, stagger:0.1}, 0.75)
+        .to(q(i,'.df-final'), {opacity:1, y:0, duration:0.8}, '+=0.3');
+      break;
+
+    /* ---- SLIDE 22 · MINDSET ---- */
+    case 21:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 0.5)
+        .to(qa(i,'.ml'), {opacity:1, y:0, duration:0.6, stagger:0.15}, 0.85)
+        .to(qa(i,'.ml-a'), {opacity:1, duration:0.3, stagger:0.15}, 1.0);
+      break;
+
+    /* ---- SLIDE 23 · ONE SYSTEM ---- */
+    case 22:
+      tl.to(qa(i,'.eyebrow'), {opacity:1, y:0, duration:0.6}, 0.1)
+        .to(q(i,'h2'), {opacity:1, y:0, duration:0.9}, 0.25)
+        .to(q(i,'.sub'), {opacity:1, y:0, duration:0.7}, 0.5)
+        .to(qa(i,'[data-sn]'), {opacity:1, scaleY:1, duration:0.5, stagger:0.11}, 0.7)
+        .to(qa(i,'.sys-arrow'), {opacity:1, duration:0.25, stagger:0.11}, 0.85);
+      trackLoop(gsap.to(qa(i,'[data-sn].hl'), {
+        boxShadow:'0 0 40px rgba(168,255,53,0.5)', duration:1.6, repeat:-1, yoyo:true, ease:'sine.inOut'
+      }));
+      break;
+
+    /* ---- SLIDE 24 · FINAL ---- */
+    case 23:
+      tl.to(qa(i,'.orb'), {opacity:0.16, duration:1.6}, 0)
+        .to(qa(i,'.fl span'), {yPercent:0, duration:1.1, stagger:0.1}, 0.3)
+        .to(q(i,'.final-sub'), {opacity:1, y:0, duration:0.8}, 0.9)
+        .to(q(i,'.final-tag'), {opacity:1, y:0, duration:0.7}, 1.15)
+        .to(q(i,'.final-line-neon'), {scaleX:1, duration:1.3, ease:'power2.inOut'}, 1.2)
+        .to(q(i,'.final-meta'), {opacity:1, y:0, duration:0.8}, 1.65)
+        .to(q(i,'.final-logo'), {opacity:1, y:0, duration:0.9}, 1.85)
+        /* cinematic close — everything falls to black but the logo + neon rule */
+        .to([q(i,'.final-center h1'), q(i,'.final-sub'), q(i,'.final-meta'), q(i,'.final-tag')],
+            {opacity:0.14, duration:1.4, ease:'power2.inOut'}, '+=2.2')
+        .to(q(i,'.final-logo'), {scale:1.03, duration:2.4, ease:'sine.inOut'}, '-=1.2');
+      break;
+  }
+
+  slideTweens.push(tl);
+  return tl;
+}
+
+/* ================================================================
+   NAVIGATION
+   ================================================================ */
+function clearSlideTweens(){
+  slideTweens.forEach(function(t){ if (t && t.kill) t.kill(); });
+  slideTweens = [];
+}
+
+function updateNav(){
+  slideNumEl.textContent   = pad(cur);
+  curNumEl.textContent     = pad(cur);
+  slideLabelEl.textContent = slideLabels[cur];
+  progressBar.style.width  = (cur / (total - 1) * 100) + '%';
+}
+
+function goTo(n){
+  if (busy || n < 0 || n >= total || n === cur) return;
+  busy = true;
+
+  var dir  = n > cur ? 1 : -1;
+  var prev = slides[cur];
+  var next = slides[n];
+
+  clearSlideTweens();
+  resetSlide(n);
+
+  next.classList.add('active');
+  gsap.set(next, {opacity:0, x:dir * 54, zIndex:3});
+  gsap.set(prev, {zIndex:2});
+
+  var tl = timeline({
+    onComplete: function(){
+      prev.classList.remove('active');
+      gsap.set(prev, {clearProps:'opacity,transform,zIndex'});
+      gsap.set(next, {clearProps:'zIndex'});
+      cur = n;
+      updateNav();
+      busy = false;
+    }
+  });
+
+  tl.to(prev, {opacity:0, x:-dir * 34, duration:0.5, ease:'power2.inOut'}, 0)
+    .to(next, {opacity:1, x:0, duration:0.8, ease:'power3.out'}, 0.16)
+    .call(function(){ animSlide(n); }, null, 0.42);
+}
+
+/* ---------------- keyboard ---------------- */
+window.addEventListener('keydown', function(e){
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'Enter' || e.key === 'ArrowDown') {
+    e.preventDefault(); goTo(cur + 1);
+  } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'ArrowUp') {
+    e.preventDefault(); goTo(cur - 1);
+  } else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+  else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+  else if (e.key === 'f' || e.key === 'F') {
+    if (document.fullscreenElement) { document.exitFullscreen(); }
+    else if (document.documentElement.requestFullscreen) { document.documentElement.requestFullscreen(); }
+  }
+});
+
+/* ---------------- pointer on stage ---------------- */
+document.getElementById('stage').addEventListener('click', function(e){
+  if (e.target.closest('.nav')) return;
+  var rect = this.getBoundingClientRect();
+  var x = (e.clientX - rect.left) / rect.width;
+  if (x > 0.28) goTo(cur + 1); else goTo(cur - 1);
+});
+
+/* ---------------- progress bar scrub ---------------- */
+document.getElementById('progress').addEventListener('click', function(e){
+  e.stopPropagation();
+  var rect = this.getBoundingClientRect();
+  var p = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+  goTo(Math.round(p * (total - 1)));
+});
+
+/* ---------------- wheel ---------------- */
+var wheelLock = false;
+window.addEventListener('wheel', function(e){
+  if (wheelLock || Math.abs(e.deltaY) < 18) return;
+  wheelLock = true;
+  setTimeout(function(){ wheelLock = false; }, 900);
+  if (e.deltaY > 0) goTo(cur + 1); else goTo(cur - 1);
+}, {passive:true});
+
+/* ---------------- touch ---------------- */
+var tx = 0, ty = 0;
+document.addEventListener('touchstart', function(e){
+  tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+}, {passive:true});
+document.addEventListener('touchend', function(e){
+  var dx = e.changedTouches[0].clientX - tx;
+  var dy = e.changedTouches[0].clientY - ty;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+    if (dx < 0) goTo(cur + 1); else goTo(cur - 1);
+  }
+}, {passive:true});
+
+/* ---------------- PDF export (press P) ----------------
+   Completes every slide's entrance instantly so all 24 frames are
+   fully rendered, then opens the browser's print dialog.
+   Choose "Save as PDF", landscape, no margins.            */
+var printReady = false;
+
+function killLoops(){
+  loopTweens.forEach(function(t){ if (t && t.kill) t.kill(); });
+  loopTweens = [];
+}
+
+function prepareForPrint(){
+  if (printReady) return;
+  printReady = true;
+  clearSlideTweens();
+  for (var i = 0; i < total; i++){
+    resetSlide(i);
+    var tl = animSlide(i);
+    killLoops();      /* infinite tweens have no meaningful end frame */
+    tl.progress(1);   /* render the finished state immediately */
+  }
+}
+
+/* after printing, restore the live slide's ambient loops */
+window.addEventListener('afterprint', function(){
+  printReady = false;
+  resetSlide(cur);
+  animSlide(cur);
+});
+
+window.addEventListener('beforeprint', prepareForPrint);
+
+window.addEventListener('keydown', function(e){
+  if (e.key === 'p' || e.key === 'P') {
+    e.preventDefault();
+    prepareForPrint();
+    setTimeout(function(){ window.print(); }, 260);
+  }
+});
+
+/* ---------------- boot ---------------- */
+resetSlide(0);
+animSlide(0);
+updateNav();
+</script>
+</body>
+</html>
